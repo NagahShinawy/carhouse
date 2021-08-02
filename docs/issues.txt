@@ -2,3 +2,7 @@
 
 just happens when using pycharm django server
 ======================================================================
+2- use debug tool bar
+
+======================================================================
+3- run superuser from pycharm not terminal

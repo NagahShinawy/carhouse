@@ -1,0 +1,24 @@
+1- objectives
+
+1-1: venv
+1-2: create django apps
+1-3: git
+1-4: bootstrap templates
+1-5: postgresql
+1-6: static files, media files
+1-7: django admin customization
+1-8: search functionality
+1-9: django pagination
+1-10: django messages
+1-11: user auth
+1-12: social media login [google, facebook]
+1-13: send emails
+1-14: database dumpdata & loaddata
+1-15: deploy on heroku server(gunicorn & whitenoise)
+
+===========================
+2- key to success the course
+
+2-1: DON'T COPY, WRITE YOUR OWN CODE.
+2-2: search & ask.
+2-3: help others

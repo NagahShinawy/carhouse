@@ -1,0 +1,4 @@
+1- CommandError: You must set settings.ALLOWED_HOSTS if DEBUG is False.
+
+just happens when using pycharm django server
+======================================================================

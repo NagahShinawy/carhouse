@@ -12,3 +12,7 @@ just happens when using pycharm django server
 
 ======================================================================
 5- follow convension of templates locations, staticfile locations
+
+
+======================================================================
+6- use cutom logging

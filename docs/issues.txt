@@ -6,3 +6,9 @@ just happens when using pycharm django server
 
 ======================================================================
 3- run superuser from pycharm not terminal
+
+======================================================================
+4- run localization to models, pages, ...
+
+======================================================================
+5- follow convension of templates locations, staticfile locations

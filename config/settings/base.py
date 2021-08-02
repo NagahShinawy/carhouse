@@ -39,6 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
+# local apps
+INSTALLED_APPS += [
+    "apps.cars",
+    "apps.contacts",
+    "apps.teams",
+]
+
+# third part apps
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -54,7 +63,7 @@ ROOT_URLCONF = "opensooq.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR.parent / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

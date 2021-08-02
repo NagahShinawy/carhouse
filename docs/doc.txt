@@ -22,3 +22,13 @@
 2-1: DON'T COPY, WRITE YOUR OWN CODE.
 2-2: search & ask.
 2-3: help others
+
+==============================
+
+use 'gitignore.io' + 'your technology' to check files to be ignored.
+
+==============================
+python manage.py --help
+
+==============================
+

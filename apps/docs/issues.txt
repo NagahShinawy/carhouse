@@ -1,0 +1,18 @@
+1- CommandError: You must set settings.ALLOWED_HOSTS if DEBUG is False.
+
+just happens when using pycharm django server
+======================================================================
+2- use debug tool bar
+
+======================================================================
+3- run superuser from pycharm not terminal
+
+======================================================================
+4- run localization to models, pages, ...
+
+======================================================================
+5- follow convension of templates locations, staticfile locations
+
+
+======================================================================
+6- use cutom logging

@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class Contactus(TemplateView):
+    template_name = 'contacts/contact-us.html'

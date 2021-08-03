@@ -8,18 +8,17 @@ class IndexView(TemplateView):
         kwargs["open_countries"] = {
             "egypt": {"capital": "Cairo", "population": "100M"},
             "tunis": {"capital": "Tunis", "population": "20M"},
-
         }
         return kwargs
 
 
 class AboutView(TemplateView):
-    template_name = 'cars/about.html'
+    template_name = "cars/about.html"
 
 
 class ServicesView(TemplateView):
-    template_name = 'cars/services.html'
+    template_name = "cars/services.html"
 
 
 class CarsView(TemplateView):
-    template_name = 'cars/listcars.html'
+    template_name = "cars/listcars.html"

@@ -54,3 +54,5 @@
 10- run localization to models, pages, ...
 
 ======================================================================
+
+11- convension to add models to admin.

@@ -10,27 +10,68 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Team',
+            name="Team",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(auto_now_add=True, verbose_name='created datetime')),
-                ('modified', models.DateTimeField(auto_now=True, verbose_name='last modified datetime')),
-                ('image', models.ImageField(blank=True, null=True, upload_to=apps.core.db.models.mixin.model_directory, verbose_name='image')),
-                ('fname', models.CharField(max_length=255, verbose_name='fname')),
-                ('lname', models.CharField(max_length=255, verbose_name='lname')),
-                ('fb', models.URLField(blank=True, null=True, verbose_name='facebook')),
-                ('twitter', models.URLField(blank=True, null=True, verbose_name='twitter')),
-                ('linkedin', models.URLField(blank=True, null=True, verbose_name='linkedin')),
-                ('emp_id', apps.core.db.models.fields.EmployeeIDField(max_length=10, validators=[django.core.validators.MinLengthValidator(10), django.core.validators.RegexValidator('[0-9]', message='Only ASCII numbers are allowed')], verbose_name='employee id')),
-                ('position', models.CharField(max_length=225)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="created datetime"
+                    ),
+                ),
+                (
+                    "modified",
+                    models.DateTimeField(
+                        auto_now=True, verbose_name="last modified datetime"
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to=apps.core.db.models.mixin.model_directory,
+                        verbose_name="image",
+                    ),
+                ),
+                ("fname", models.CharField(max_length=255, verbose_name="fname")),
+                ("lname", models.CharField(max_length=255, verbose_name="lname")),
+                ("fb", models.URLField(blank=True, null=True, verbose_name="facebook")),
+                (
+                    "twitter",
+                    models.URLField(blank=True, null=True, verbose_name="twitter"),
+                ),
+                (
+                    "linkedin",
+                    models.URLField(blank=True, null=True, verbose_name="linkedin"),
+                ),
+                (
+                    "emp_id",
+                    apps.core.db.models.fields.EmployeeIDField(
+                        max_length=10,
+                        validators=[
+                            django.core.validators.MinLengthValidator(10),
+                            django.core.validators.RegexValidator(
+                                "[0-9]", message="Only ASCII numbers are allowed"
+                            ),
+                        ],
+                        verbose_name="employee id",
+                    ),
+                ),
+                ("position", models.CharField(max_length=225)),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False,},
         ),
     ]

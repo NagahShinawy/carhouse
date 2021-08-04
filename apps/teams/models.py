@@ -7,7 +7,7 @@ from apps.core.db.models import (
     FullNameModelMixin,
     ImageModelMixin,
     SocialMediaModelMixin,
-    EmployeeIDField
+    EmployeeIDField,
 )
 
 

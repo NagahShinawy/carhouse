@@ -19,5 +19,5 @@ __all__ = [
     "ImageModelMixin",
     "FullNameModelMixin",
     "SocialMediaModelMixin",
-    "EmployeeIDField"
+    "EmployeeIDField",
 ]

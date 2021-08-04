@@ -20,3 +20,7 @@ class Team(
 ):
     emp_id = EmployeeIDField(verbose_name=_("employee id"))
     position = models.CharField(max_length=225)
+
+    class Meta:
+        verbose_name = 'Team Person'
+        ordering = ["fname"]

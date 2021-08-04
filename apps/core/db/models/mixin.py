@@ -60,7 +60,7 @@ class FullNameModelMixin(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ["fname"]
+        ordering = ["fname"]  # todo: fix this not applied
 
     def __str__(self):
         return self.fname

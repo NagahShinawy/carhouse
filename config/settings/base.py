@@ -127,6 +127,12 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR.parent / 'collectstatic'
 STATICFILES_DIRS = [BASE_DIR.parent / 'static', ]
 
+# media
+MEDIA_URL = "/media/"
+MEDIA_DIR = BASE_DIR.parent / "media"
+MEDIA_ROOT = MEDIA_DIR
+
+
 PRE_CHAIN = [
     structlog.processors.TimeStamper(fmt="iso"),
     structlog.stdlib.add_logger_name,

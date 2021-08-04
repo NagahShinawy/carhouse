@@ -4,15 +4,15 @@ just happens when using pycharm django server
 ======================================================================
 2- use debug tool bar
 
-======================================================================
+=========================================================================================================
 3- run superuser from pycharm not terminal
 
-======================================================================
-4- run localization to models, pages, ...
 
-======================================================================
-5- follow convension of templates locations, staticfile locations
+==========================================================================================================
+7- Auto-created primary key used when not defining a primary key type, (new in django3.2) CHECK LINK BELOW.
+https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-not-defining-a-primary-key-type-warning-in-dja
 
+==========================================================================================================
 
-======================================================================
-6- use cutom logging
+8- Model class apps.core.models.mixin.SocialMediaModelMixin doesn't declare an explicit app_label and isn't in an application in
+SOLVED BY abstract = True

@@ -25,10 +25,32 @@
 
 ==============================
 
-use 'gitignore.io' + 'your technology' to check files to be ignored.
+3-use 'gitignore.io' + 'your technology' to check files to be ignored.
 
 ==============================
-python manage.py --help
+4- python manage.py --help
+
+==============================
+5- follow django_seh_commom
+
+=========================
+6- django localization
+
+=========================
+7- how to add social media model fields with validation
+
 
 ==============================
 
+8- follow convension of templates locations, staticfile locations
+
+
+======================================================================
+9- use cutom logging
+
+
+======================================================================
+
+10- run localization to models, pages, ...
+
+======================================================================

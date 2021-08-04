@@ -74,7 +74,9 @@ class SentryBreadcrumbJsonProcessor(SentryJsonProcessor):
         add_breadcrumb(breadcrumb, hint={"event_dict": event_dict})
 
     def __call__(self, logger, method, event_dict) -> dict:
-        do_breadcrumb = getattr(logging, event_dict["level"].upper()) >= self.breadcrumb_level
+        do_breadcrumb = (
+            getattr(logging, event_dict["level"].upper()) >= self.breadcrumb_level
+        )
 
         if do_breadcrumb:
             self.save_breadcrumb(logger, event_dict)

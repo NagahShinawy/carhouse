@@ -1,14 +1,13 @@
 from django.views.generic import TemplateView
+from apps.teams.models import Team
 
 
 class IndexView(TemplateView):
     template_name = "cars/index.html"
 
     def get_context_data(self, **kwargs):
-        kwargs["open_countries"] = {
-            "egypt": {"capital": "Cairo", "population": "100M"},
-            "tunis": {"capital": "Tunis", "population": "20M"},
-        }
+        kwargs["team"] = Team.objects.first_member_by_id(pk=257)
+
         return kwargs
 
 

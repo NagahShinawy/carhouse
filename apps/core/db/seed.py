@@ -7,6 +7,8 @@ from faker import Faker
 
 from apps.teams.models import Team
 
+SOCIAL_MEDIA = ("facebook", "twitter", "linkedin")
+
 fake = Faker()
 
 
@@ -16,7 +18,7 @@ def create_team():
     lname = fullname[1]
     job = fake.job()
     nid = get_nid()
-    fb, tw, lnk = [generate_socialmedia(website) for website in ("facebook", "twitter", "linkedin")]
+    fb, tw, lnk = [generate_socialmedia(website) for website in SOCIAL_MEDIA]
     fb_profile = fb + fname if fb else None
     tw_profile = tw + fname if tw else None
     lnk_profile = lnk + fname if lnk else None

@@ -291,10 +291,11 @@
             <div class="row slick-carousel"
                  data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
                 <div class="slick-slide-item">
-                    <div class="team-1">
+                    {% for member in team %}
+                        <div class="team-1">
                         <div class="photo">
                             <a href="#">
-                                <img src="{% static 'img/avatar/avatar-12.jpg' %}" alt="team-1" class="img-fluid">
+                                <img src='{{ member.image.url }}'  alt="team-1" class="img-fluid">
                             </a>
                             <div class="social-list clearfix">
                                 <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
@@ -303,10 +304,11 @@
                             </div>
                         </div>
                         <div class="details">
-                            <h4><a href="team-detail.html">Brandon Miller</a></h4>
+                            <h4><a href="team-detail.html">{{ member.fname }} {{ member.lname }}</a></h4>
                             <h5>Manager</h5>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

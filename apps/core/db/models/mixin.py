@@ -69,6 +69,7 @@ class FullNameModelMixin(models.Model):
 class SocialMediaModelMixin(models.Model):
     fb = models.URLField(null=True, blank=True, verbose_name=_("facebook"))
     twitter = models.URLField(null=True, blank=True, verbose_name=_("twitter"))
+    google = models.URLField(null=True, blank=True, verbose_name=_("google"))
     linkedin = models.URLField(null=True, blank=True, verbose_name=_("linkedin"))
 
     class Meta:

@@ -87,24 +87,41 @@
         <div class="slick-slider-area clearfix">
             <div class="row slick-carousel"
                  data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                <div class="slick-slide-item">
-                    <div class="team-1">
+                {% for member in team %}
+                    <div class="slick-slide-item">
+                        <div class="team-1">
                         <div class="photo">
-                            <a href="#">
-                                <img src="{% static 'img/avatar/avatar-12.jpg' %}" alt="team-1" class="img-fluid">
+                            {% if member.image %}
+                                <a href="{{ member.image.url }}" target="_blank">
+                                <img src="{{ member.image.url }}" alt="team-1" class="img-fluid">
                             </a>
+                            {% endif %}
                             <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+
+                                {% if member.fb %}
+                                    <a href="{{ member.fb }}" class="facebook-bg" target=_"blank"><i class="fa fa-facebook"></i></a>
+                                {% endif %}
+
+                                {% if member.twitter %}
+                                    <a href="{{ member.twitter }}" class="twitter-bg" target=_"blank"><i class="fa fa-twitter"></i></a>
+                                {% endif %}
+
+
+                                {% if member.google %}
+                                    <a href="{{ member.google }}" class="google-bg" target=_"blank"><i class="fa fa-google"></i></a>
+                                {% endif %}
+                                {% if member.linkedin %}
+                                    <a href="{{ member.linkedin }}" class="linkedin-bg" target=_"blank"><i class="fa fa-linkedin"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="details">
-                            <h4><a href="team-detail.html">Brandon Miller</a></h4>
-                            <h5>Manager</h5>
+                            <h4><a href="team-detail.html">{{ member.fname }} {{ member.lname }}</a></h4>
+                            <h5>{{ member.position }}</h5>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

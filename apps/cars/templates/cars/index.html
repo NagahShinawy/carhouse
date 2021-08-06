@@ -302,17 +302,27 @@
                             </a>
                             {% endif %}
                             <div class="social-list clearfix">
-                                <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+
+                                {% if member.fb %}
+                                    <a href="{{ member.fb }}" class="facebook-bg" target=_"blank"><i class="fa fa-facebook"></i></a>
+                                {% endif %}
+
+                                {% if member.twitter %}
+                                    <a href="{{ member.twitter }}" class="twitter-bg" target=_"blank"><i class="fa fa-twitter"></i></a>
+                                {% endif %}
+
+
+                                {% if member.google %}
+                                    <a href="{{ member.google }}" class="google-bg" target=_"blank"><i class="fa fa-google"></i></a>
+                                {% endif %}
                                 {% if member.linkedin %}
-                                    <a href="{{ member.linkedin }}" class="linkedin-bg"><i class="fa fa-linkedin"></i></a>
+                                    <a href="{{ member.linkedin }}" class="linkedin-bg" target=_"blank"><i class="fa fa-linkedin"></i></a>
                                 {% endif %}
                             </div>
                         </div>
                         <div class="details">
                             <h4><a href="team-detail.html">{{ member.fname }} {{ member.lname }}</a></h4>
-                            <h5>Manager</h5>
+                            <h5>{{ member.position }}</h5>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,12 @@ class IndexView(TemplateView):
 
 class AboutView(TemplateView):
     template_name = "cars/about.html"
+    MEMBERS_LIMIT = 3
+
+    def get_context_data(self, **kwargs):
+        kwargs["team"] = Team.objects.limit_team_by(limit=self.MEMBERS_LIMIT)
+        logging.info(f"members team [{kwargs['team']}]")
+        return kwargs
 
 
 class ServicesView(TemplateView):

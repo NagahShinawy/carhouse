@@ -118,11 +118,14 @@ class Owner(models.IntegerChoices):
 
 
 class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
+    class Year:
+        MIX_YEAR = 2000
+        choices = [(year, str(year)) for year in [year for year in range(MIX_YEAR, datetime.now().year + 1)]]
 
-    MIX_YEAR = 2000
-
-    year_choices = ((year, year) for year in [year for year in range(MIX_YEAR, datetime.now().year + 1)])
-
+        # todo: fix => error: (fields.E004) 'choices' must be an iterable (e.g., a list or tuple)
+        # @property
+        # def choices(self):
+        #     return [(year, str(year)) for year in [year for year in range(MIX_YEAR, datetime.now().year + 1)]]
     car_title = models.CharField(max_length=255, verbose_name=_("car title"))
 
     state = models.CharField(choices=State.choices, verbose_name=_("state"), max_length=50)
@@ -133,7 +136,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     model = models.CharField(max_length=100, verbose_name=_("model"))
 
-    year = models.PositiveSmallIntegerField(choices=year_choices, verbose_name=_("year"))
+    year = models.PositiveSmallIntegerField(choices=Year.choices, verbose_name=_("year"))
 
     conditions = models.CharField(max_length=100, verbose_name=_("conditions"))
 

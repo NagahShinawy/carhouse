@@ -107,10 +107,14 @@ class Fuel(models.TextChoices):
 
 
 class Owner(models.IntegerChoices):
-
-    @property
-    def choices(self):
-        return list(range(1, 101))
+    OWNER1 = 1, _("1")
+    OWNER2 = 2, "2"
+    OWNER3 = 3, "3"
+    OWNER4 = 4, "4"
+    OWNER5 = 5, "5"
+    OWNER6 = 6, "6"
+    OWNER7 = 7, "7"
+    OWNER8 = 8, "8"
 
 
 class Car(TimeStampModelMixin, ImageModelMixin, models.Model):

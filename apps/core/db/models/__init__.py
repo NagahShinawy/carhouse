@@ -9,7 +9,7 @@ from .mixin import (
     FullNameModelMixin,
     SocialMediaModelMixin,
 )
-from .fields import EmployeeIDField
+from .fields import EmployeeIDField, YearField
 
 
 __all__ = [
@@ -20,4 +20,5 @@ __all__ = [
     "FullNameModelMixin",
     "SocialMediaModelMixin",
     "EmployeeIDField",
+    "YearField"
 ]

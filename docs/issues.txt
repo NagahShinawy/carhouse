@@ -16,3 +16,15 @@ https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-n
 
 8- Model class apps.core.models.mixin.SocialMediaModelMixin doesn't declare an explicit app_label and isn't in an application in
 SOLVED BY abstract = True
+
+==========================================================
+9- how to add year field ?
+
+=====================================================
+
+when you define class attr 'choices' at class that inherite from TextChoices
+10- TypeError: str() takes at most 3 arguments (13 given)
+
+========================================================
+11- year range choice field, how to custome choices at fields that inherit from InegerChoices or TextChoices
+===========================================================

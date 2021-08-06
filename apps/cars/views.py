@@ -1,16 +1,18 @@
 import logging
-from django.views.generic import ListView, TemplateView
+from django.views.generic import TemplateView
 from apps.teams.models import Team
+from apps.cars.models import Car
 
 
-class IndexView(ListView):
+class IndexView(TemplateView):
     template_name = "cars/index.html"
     MEMBERS_LIMIT = 4
-    model = Team
 
     def get_context_data(self, **kwargs):
         kwargs["team"] = Team.objects.limit_team_by(limit=self.MEMBERS_LIMIT)
+        kwargs["cars"] = Car.objects
         logging.info(f"members team [{kwargs['team']}]")
+        logging.info(f"cars [{kwargs['cars']}]")
         return kwargs
 
 

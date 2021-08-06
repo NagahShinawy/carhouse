@@ -15,8 +15,8 @@
             <div class="col-lg-8 col-md-8 col-sm-7">
                 <div class="list-inline">
                     <a href="tel:+55-4XX-634-7071"><i class="fa fa-phone"></i>+55-4XX-634-7071</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-envelope"></i>info@themevessel.com</a>
-                    <a href="tel:info@themevessel.com"><i class="fa fa-clock-o"></i>Mon - Sun: 8:00am - 6:00pm</a>
+                    <a href="tel:info@opensooq.com"><i class="fa fa-envelope"></i>info@opensooq.com</a>
+                    <a href="tel:info@opensooq.com"><i class="fa fa-clock-o"></i>Mon - Sun: 8:00am - 6:00pm</a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-5">
@@ -48,30 +48,30 @@
             <div class="navbar-collapse collapse w-100" id="navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cars:index' %}" id="navbarDropdownMenuLink">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'cars:index' %}" id="navbarDropdownMenuLink">
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cars:cars' %}">
+                        <a class="nav-link {% if request.path == '/cars/' %}active{% endif %}" href="{% url 'cars:cars' %}">
                             Cars
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cars:about' %}">
+                        <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'cars:about' %}">
                             About
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cars:services' %}">
+                        <a class="nav-link {% if request.path == '/services/' %}active{% endif %}" href="{% url 'cars:services' %}">
                             Services
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="{% url 'contacts:contact-us' %}">Contact</a>
+                        <a class="nav-link {% if request.path == '/contact-us/' %}active{% endif %}" href="{% url 'contacts:contact-us' %}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% static 'pdf/rules_and_regulations.pdf' %}">
+                        <a class="nav-link" target="_blank" href="{% static 'pdf/rules_and_regulations.pdf' %}">
                             Rules
                         </a>
                     </li>

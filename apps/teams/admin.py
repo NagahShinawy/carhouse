@@ -13,7 +13,6 @@ class TeamAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "thumbnail",
-        "username",
         "emp_id",
         "fname",
         "lname",

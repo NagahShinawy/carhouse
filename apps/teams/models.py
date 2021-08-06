@@ -24,7 +24,7 @@ class Team(
     objects = managers.TeamManager()
 
     class Meta:
-        verbose_name = 'Team Person'
+        verbose_name = "Team Person"
         ordering = ["-id"]
 
     def __str__(self):

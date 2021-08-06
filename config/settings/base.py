@@ -24,6 +24,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEBUG_TOOLBAR = os.environ.get("DEBUG_TOOLBAR", default=False)
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -44,9 +46,15 @@ INSTALLED_APPS += [
     "apps.teams",
 ]
 
-# third part apps
+if DEBUG and DEBUG_TOOLBAR:
+    INSTALLED_APPS += [
+        "debug_toolbar"
+    ]
+    MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"]
+else:
+    MIDDLEWARE = []
 
-MIDDLEWARE = [
+MIDDLEWARE += [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

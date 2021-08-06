@@ -5,10 +5,12 @@ from apps.teams.models import Team
 
 class IndexView(TemplateView):
     template_name = "cars/index.html"
+    MEMBERS_LIMIT = 4
 
     def get_context_data(self, **kwargs):
-        kwargs["member"] = Team.objects.first_member_by_id(pk=257)
-        logging.info(f"member team [{kwargs['member']}]")
+        # kwargs["member"] = Team.objects.first_member_by_id(pk=257)
+        kwargs["team"] = Team.objects.limit_team_by(limit=self.MEMBERS_LIMIT)
+        logging.info(f"members team [{kwargs['team']}]")
         return kwargs
 
 

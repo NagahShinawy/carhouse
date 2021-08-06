@@ -13,3 +13,6 @@ class TeamManager(models.Manager):
         if member:
             return member.first()
         return None
+
+    def limit_team_by(self, limit):
+        return self.all_team()[:limit]

@@ -287,20 +287,27 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
         </div>
         <!-- Slick slider area start -->
-        <div class="slick-slider-area clearfix">
+
+            <div class="slick-slider-area clearfix">
+
             <div class="row slick-carousel"
                  data-slick='{"slidesToShow": 4, "responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 2}}, {"breakpoint": 768,"settings":{"slidesToShow": 1}}]}'>
-                <div class="slick-slide-item">
-                    <div class="team-1">
+                {% for member in team %}
+                    <div class="slick-slide-item">
+                        <div class="team-1">
                         <div class="photo">
-                            <a href="#">
+                            {% if member.image %}
+                                <a href="{{ member.image.url }}" target="_blank">
                                 <img src="{{ member.image.url }}" alt="team-1" class="img-fluid">
                             </a>
+                            {% endif %}
                             <div class="social-list clearfix">
                                 <a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
                                 <a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
                                 <a href="#" class="google-bg"><i class="fa fa-google"></i></a>
-                                <a href="{{ member.linkedin }}" class="linkedin-bg"><i class="fa fa-linkedin"></i></a>
+                                {% if member.linkedin %}
+                                    <a href="{{ member.linkedin }}" class="linkedin-bg"><i class="fa fa-linkedin"></i></a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="details">
@@ -309,8 +316,11 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
+
         </div>
+
     </div>
 </div>
 {% endblock %}

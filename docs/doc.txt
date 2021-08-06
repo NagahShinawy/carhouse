@@ -51,8 +51,15 @@
 
 ======================================================================
 
-10- run localization to models, pages, ...
+10- run localization to models, pages, apis and all.
 
 ======================================================================
 
 11- convension to add models to admin.
+
+===================================================================
+
+12-
+"whitenoise.middleware.WhiteNoiseMiddleware",  # whitenoise
+    "corsheaders.middleware.CorsMiddleware",  # django-cors-headers
+    "sehhaty_django_common.utils.middleware.LocaleMiddleware",  # simplified locale

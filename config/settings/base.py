@@ -9,13 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import logging
 import os
 from pathlib import Path
-
-import structlog
-
-from apps.core.utils import logging_processors
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,74 +128,26 @@ MEDIA_DIR = BASE_DIR.parent / "media"
 MEDIA_ROOT = MEDIA_DIR
 
 
-PRE_CHAIN = [
-    structlog.processors.TimeStamper(fmt="iso"),
-    structlog.stdlib.add_logger_name,
-    structlog.stdlib.add_log_level,
-    structlog.processors.format_exc_info,
-    logging_processors.merge_in_threadlocal_processor,
-    logging_processors.SentryBreadcrumbJsonProcessor(level=logging.ERROR),
-    structlog.processors.ExceptionPrettyPrinter(),
-]
-LOG_LEVEL = 'DEBUG'
 # Logging
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "filters": {
-        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
-        "require_debug_true": {"()": "django.utils.log.RequireDebugTrue"},
-    },
     "formatters": {
-        "json_formatter": {
-            "()": structlog.stdlib.ProcessorFormatter,
-            "processor": structlog.processors.JSONRenderer(),
-            "foreign_pre_chain": PRE_CHAIN,
+        "verbose": {
+            "format": "[{levelname}] {asctime} in {pathname}/{funcName}: {message}",
+            "style": "{",
         },
-        "plain_console": {
-            "()": structlog.stdlib.ProcessorFormatter,
-            "processor": structlog.dev.ConsoleRenderer(),
-            "foreign_pre_chain": PRE_CHAIN,
+        "simple": {
+            "format": "[{levelname}] {message}",
+            "style": "{",
         },
     },
     "handlers": {
-        "default": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-        },
-        "null": {"class": "logging.NullHandler", "level": "DEBUG"},
+        "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
-    "root": {"level": "WARNING", "handlers": ["default"]},
-    "loggers": {
-        "api": {"level": LOG_LEVEL, "propagate": False, "handlers": ["default"], },
-        "cars": {"level": LOG_LEVEL, "propagate": False, "handlers": ["default"]},
-        "contact": {"level": LOG_LEVEL, "propagate": False, "handlers": ["default"], },
-        "core": {"level": LOG_LEVEL, "propagate": False, "handlers": ["default"], },
-        "team": {"level": LOG_LEVEL, "propagate": False, "handlers": ["default"], },
-        "django": {"level": "INFO", "propagate": False, "filters": ["require_debug_true"], "handlers": ["default"], },
-        "django.request": {
-            "level": "DEBUG",
-            "propagate": False,
-            "filters": ["require_debug_true"],
-            "handlers": ["default"],
-        },
-        "django.db.backends": {
-            "level": "ERROR",
-            "handlers": ["default"],
-            "filters": ["require_debug_true"],
-            "propagate": False,
-        },
-        "django.security.DisallowedHost": {"handlers": ["null"], "propagate": False, },
-        "parso": {"level": "WARNING"},
-        "spyne": {"level": "ERROR"},
-        "factory": {"level": "WARNING"},
-        "faker": {"level": "WARNING"},
-        "jsonmerge": {"level": "WARNING"},
-        "pyexcel_io": {"level": "WARNING"},
-        "pyexcel": {"level": "WARNING"},
-        "lml": {"level": "WARNING"},
-        "dicttoxml": {"level": "WARNING"},
-        "botocore": {"level": "WARNING"},
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
     },
 }
 

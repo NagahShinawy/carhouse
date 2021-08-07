@@ -35,9 +35,7 @@ class YearField(models.IntegerField):
     def __init__(self, *args, **kwargs):
         kwargs["validators"] = [
             validators.MinValueValidator(self.MIN_YEAR),
-            validators.MaxValueValidator(
-                2021, message=_("Only Year from are allowed")
-            ),
+            validators.MaxValueValidator(2021, message=_("Only Year from are allowed")),
         ]
         kwargs["default"] = get_current_year()
         super(YearField, self).__init__(*args, **kwargs)

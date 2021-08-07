@@ -9,6 +9,5 @@ class CarAdmin(admin.ModelAdmin, ThumbnailMixin):
     list_display = [field.name for field in Car._meta.fields]
     list_display += ["thumbnail"]
 
-    def thumbnail(self, obj):
+    def thumbnail(self, obj, *args):
         return super(CarAdmin, self).thumbnail(obj)
-

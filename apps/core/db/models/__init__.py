@@ -20,5 +20,5 @@ __all__ = [
     "FullNameModelMixin",
     "SocialMediaModelMixin",
     "EmployeeIDField",
-    "YearField"
+    "YearField",
 ]

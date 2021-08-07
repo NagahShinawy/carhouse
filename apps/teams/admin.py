@@ -7,10 +7,7 @@ from apps.core.admin.mixin import ThumbnailMixin
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin, ThumbnailMixin):
-    CIRCLE = "50%"
-    HREF_IMG_TAG = """
-    <img src="{src}" width=30 height=30 style="border-radius:{border_radius}">
-    """
+    CIRCLE = "50px"
     list_display = (
         "id",
         "thumbnail",
@@ -27,5 +24,5 @@ class TeamAdmin(admin.ModelAdmin, ThumbnailMixin):
     # raw_id_fields = ("emp_id",)
     # list_select_related = ("nationality",)
 
-    def thumbnail(self, obj):
-        return super().thumbnail(obj)
+    def thumbnail(self, obj, *args):
+        return super().thumbnail(obj, is_link=True)

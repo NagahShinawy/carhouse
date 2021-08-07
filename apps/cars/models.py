@@ -2,6 +2,8 @@ from datetime import datetime
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from multiselectfield import MultiSelectField
+from ckeditor.fields import RichTextField
 
 from apps.core import managers
 from apps.core.db.models import (
@@ -134,7 +136,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     price = models.FloatField(verbose_name=_("price"))
 
-    description = models.TextField(max_length=255, verbose_name=_("description"))
+    description = RichTextField(max_length=255, verbose_name=_("description"))
 
     image = models.ImageField(upload_to=model_directory, verbose_name=_("image"))
 
@@ -146,7 +148,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     image5 = models.ImageField(upload_to=model_directory, verbose_name=_("image5"), null=True, blank=True)
 
-    features = models.CharField(max_length=100, choices=Features.choices, verbose_name=_("features"))
+    features = MultiSelectField(choices=Features.choices, blank=True, null=True, verbose_name=_("features"))
 
     body_style = models.CharField(max_length=100, verbose_name=_("body style"), default="")
 
@@ -176,3 +178,6 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     def __str__(self):
         return f"{self.car_title}-{self.model}-{self.price}"
+
+    class Meta:
+        ordering = ["-created"]

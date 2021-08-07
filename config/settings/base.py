@@ -46,6 +46,18 @@ INSTALLED_APPS += [
     "apps.teams",
 ]
 
+
+# third party
+INSTALLED_APPS += [
+    "ckeditor",
+]
+
+# django-multiselectfield:
+# A Multiple Choice model field
+INSTALLED_APPS += [
+    "multiselectfield",
+]
+
 if DEBUG and DEBUG_TOOLBAR:
     INSTALLED_APPS += [
         "debug_toolbar"

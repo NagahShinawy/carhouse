@@ -11,6 +11,11 @@ from apps.core.db.models import (
 from apps.core.db.models.mixin import model_directory
 
 
+class ChoiceManager:
+
+    choices = ()
+
+
 class State(models.TextChoices):
     ALABAMA = ('AL', 'Alabama')
     ALASKA = ('AK', 'Alaska')
@@ -81,22 +86,14 @@ class Features(models.TextChoices):
     BLUETOOTH_HANDSET = ('Bluetooth Handset', 'Bluetooth Handset')
 
 
-class Doors(models.IntegerChoices):
-    UP_LEFT = 1, "1"
-    UP_RIGHT = 2, "2"
-    DOWN_LEFT = 3, "3"
-    DOWN_RIGHT = 4, "4"
+class Doors(ChoiceManager):
+    MAX_DOORS = 4
+    choices = ((i, str(i)) for i in range(1, MAX_DOORS + 1))
 
 
-class Passengers(models.IntegerChoices):
-    PASSENGER1 = 1, "1"
-    PASSENGER2 = 2, "2"
-    PASSENGER3 = 3, "3"
-    PASSENGER4 = 4, "4"
-    PASSENGER5 = 5, "5"
-    PASSENGER6 = 6, "6"
-    PASSENGER7 = 7, "7"
-    PASSENGER8 = 8, "8"
+class Passengers(ChoiceManager):
+    MAX_PASSENGERS = 8
+    choices = ((i, str(i)) for i in range(1, MAX_PASSENGERS + 1))
 
 
 class Fuel(models.TextChoices):
@@ -106,15 +103,9 @@ class Fuel(models.TextChoices):
     ethanol = "ethanol", _("Ethanol")
 
 
-class Owner(models.IntegerChoices):
-    OWNER1 = 1, _("1")
-    OWNER2 = 2, "2"
-    OWNER3 = 3, "3"
-    OWNER4 = 4, "4"
-    OWNER5 = 5, "5"
-    OWNER6 = 6, "6"
-    OWNER7 = 7, "7"
-    OWNER8 = 8, "8"
+class Owner(ChoiceManager):
+    MAX_OWNERS = 10
+    choices = ((i, str(i)) for i in range(1, MAX_OWNERS + 1))
 
 
 class Year:

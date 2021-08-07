@@ -207,4 +207,5 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
         return f"{self.car_title}-{self.model}-{self.price}"
 
     class Meta:
+        verbose_name = "list Car"
         ordering = ["-created"]

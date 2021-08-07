@@ -8,7 +8,7 @@ from apps.core.admin.mixin import ThumbnailMixin
 class CarAdmin(admin.ModelAdmin, ThumbnailMixin):
     list_display = [field.name for field in Car._meta.fields]
     list_display += ["thumbnail"]
-    list_filter = ("year", "model")
+    list_filter = ("year", "model", "fuel_type", "doors", "passengers", "state")
     list_per_page = 5
     list_display_links = ("id", "car_title", "state")
     list_editable = ("is_features", "fuel_type")

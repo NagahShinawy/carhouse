@@ -1,5 +1,6 @@
 
 {% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
 
 
@@ -75,8 +76,8 @@
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>{{ car.fuel_type }}</li>
-                                    <li>{{ car.mileages }}  km</li>
-                                    <li>{{ car.movement }}</li>
+                                    <li>{{ car.mileages|intcomma }}  km</li>
+                                    <li>{{ car.transmission }}</li>
                                     <li>Sport</li>
                                     <li>{{ car.color }}</li>
                                     <li>{{ car.year }}</li>

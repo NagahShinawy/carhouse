@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.core import validators
 from django.utils.translation import gettext_lazy as _
 from multiselectfield import MultiSelectField
 from ckeditor.fields import RichTextField
@@ -121,6 +122,11 @@ class Year:
         ]
 
 
+class Transmission(models.TextChoices):
+    manual = "manual", _("Manual")
+    automatic = "automatic", _("Automatic")
+
+
 class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     car_title = models.CharField(max_length=255, verbose_name=_("car title"))
@@ -173,7 +179,9 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     engine = models.CharField(max_length=100, verbose_name=_("engine"))
 
-    transmission = models.CharField(max_length=100, verbose_name=_("transmission"))
+    transmission = models.CharField(
+        max_length=10, choices=Transmission.choices, default=Transmission.automatic, verbose_name=_("transmission")
+    )
 
     interior = models.CharField(max_length=100, verbose_name=_("interior"))
 
@@ -201,7 +209,19 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     is_features = models.BooleanField(default=False, verbose_name=_("features?"))
 
+    discount = models.PositiveSmallIntegerField(
+        default=0,
+        validators=[validators.MinValueValidator(0), validators.MaxValueValidator(100)],
+    )
+
     objects = managers.CarManager()
+
+    def save(self, *args, **kwargs):
+        setattr(self, "old_price", self.price)
+        if self.discount > 0:
+            discount = self.discount / 100
+            self.price = self.price - (self.price * discount)
+        super(Car, self).save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.car_title}-{self.model}-{self.price}"

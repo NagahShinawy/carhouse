@@ -28,15 +28,16 @@
             <div class="col-lg-8 col-md-12">
 
                 <div class="row">
-                    <div class="col-lg-6 col-md-6">
+                    {% for car in cars %}
+                            <div class="col-lg-6 col-md-6">
                         <div class="car-box-3">
                             <div class="car-thumbnail">
                                 <a href="car-details.html" class="car-img">
                                     <div class="tag">For Rent</div>
                                     <div class="price-box">
-                                        <span>$780.00</span>
+                                        <span>${{ car.price }}</span>
                                     </div>
-                                    <img class="d-block w-100" src="{% static 'img/car/car-1.jpg' %}" alt="car">
+                                    <img class="d-block w-100" src="{{ car.image.url }}" alt="car">
                                 </a>
                                 <div class="carbox-overlap-wrapper">
                                     <div class="overlap-box">
@@ -65,24 +66,25 @@
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="car-details.html">Lamborghini Huracán</a>
+                                    <a href="car-details.html">{{ car.car_title }}</a>
                                 </h1>
                                 <div class="location">
                                     <a href="car-details.html">
-                                        <i class="flaticon-pin"></i>123 Kathal St. Tampa City,
+                                        <i class="flaticon-pin"></i>{{ car.miles }} {{ car.state }} St. {{ car.city }} City,
                                     </a>
                                 </div>
                                 <ul class="facilities-list clearfix">
-                                    <li>Petrol</li>
-                                    <li>4,000 km</li>
-                                    <li>Manual</li>
+                                    <li>{{ car.fuel_type }}</li>
+                                    <li>{{ car.mileages }}  km</li>
+                                    <li>{{ car.movement }}</li>
                                     <li>Sport</li>
-                                    <li>white</li>
-                                    <li>2020</li>
+                                    <li>{{ car.color }}</li>
+                                    <li>{{ car.year }}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <!-- Page navigation start -->
                 <div class="pagination-box p-box-2 text-center">

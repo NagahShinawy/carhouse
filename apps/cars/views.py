@@ -10,9 +10,11 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs["team"] = Team.objects.limit_team_by(limit=self.MEMBERS_LIMIT)
-        kwargs["cars"] = Car.objects
-        logging.info(f"members team [{kwargs['team']}]")
-        logging.info(f"cars [{kwargs['cars']}]")
+        logging.info(f"MEMBERS TEAM [{kwargs['team']}]")
+        kwargs["features_cars"] = Car.objects.features_cars()
+        logging.info(f"FEATURES CARS [{kwargs['features_cars']}]")
+        kwargs["recently_cars"] = Car.objects.recently_cars()
+        logging.info(f"RECENTLY CARS [{kwargs['recently_cars']}]")
         return kwargs
 
 
@@ -32,3 +34,8 @@ class ServicesView(TemplateView):
 
 class CarsView(TemplateView):
     template_name = "cars/listcars.html"
+
+    def get_context_data(self, **kwargs):
+        kwargs["cars"] = Car.objects.all_cars()
+        logging.info(f"CARS [{kwargs['cars']}]")
+        return kwargs

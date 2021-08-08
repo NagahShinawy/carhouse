@@ -9,8 +9,8 @@ class CarAdmin(admin.ModelAdmin, ThumbnailMixin):
     list_display = ["id"] + ["thumbnail"] + [field.name for field in Car._meta.fields if field != 'id']
     list_filter = ("year", "model", "fuel_type", "doors", "passengers", "state")
     list_per_page = 5
-    list_display_links = ("id", "car_title", "state")
-    list_editable = ("is_features", "fuel_type")
+    list_display_links = ("id", "car_title", "state", "thumbnail")
+    list_editable = ("is_features", "fuel_type", "discount")
     search_fields = (
         "year",
         "car_title",

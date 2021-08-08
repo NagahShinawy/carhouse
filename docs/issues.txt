@@ -29,5 +29,12 @@ when you define class attr 'choices' at class that inherite from TextChoices
 11- year range choice field, how to custome choices at fields that inherit from InegerChoices or TextChoices
 ===========================================================
 
-12- (fields.E004) 'choices' must be an iterable (e.g., a list or tuple)
+12- (fields.E004) 'choices' must be an iterable (e.g., a list or tuple)  SOLVED
+
+===============================================================
+
+13- calc discount on the fly
+settartt, override save method
+
+
 

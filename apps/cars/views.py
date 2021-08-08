@@ -1,5 +1,5 @@
 import logging
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from apps.teams.models import Team
 from apps.cars.models import Car
 
@@ -39,3 +39,8 @@ class CarsView(TemplateView):
         kwargs["cars"] = Car.objects.all_cars()
         logging.info(f"CARS [{kwargs['cars']}]")
         return kwargs
+
+
+class CarDetailView(DetailView):
+    template_name = "cars/car-details.html"
+    model = Car

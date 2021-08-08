@@ -63,3 +63,22 @@
 "whitenoise.middleware.WhiteNoiseMiddleware",  # whitenoise
     "corsheaders.middleware.CorsMiddleware",  # django-cors-headers
     "sehhaty_django_common.utils.middleware.LocaleMiddleware",  # simplified locale
+
+
+=================================================================
+
+13- adding humnize
+
+===================================================================
+14- round in the django template
+
+https://stackoverflow.com/questions/18185351/how-can-i-round-a-value-in-django-template-without-using-the-filter
+
+====================================================================
+
+15- adding multiple django template filter
+
+https://stackoverflow.com/questions/6281404/how-to-apply-multiple-filters-on-a-django-template-variable
+
+====================================================================
+

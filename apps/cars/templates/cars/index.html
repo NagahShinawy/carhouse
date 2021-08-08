@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
 {% block title %} opensooq {% endblock %}
 
@@ -133,9 +134,9 @@
                             <a href="car-details.html" class="car-img">
                                 <div class="tag-2">Featured</div>
                                 <div class="price-box">
-                                    <span class="del"><del>${{ car.price }}</del></span>
+                                    <span class="del"><del>${{ car.price|floatformat:2|intcomma }}</del></span>
                                     <br>
-                                    <span>${{ car.price }}</span>
+                                    <span>${{ car.price|floatformat:2|intcomma }}</span>
                                 </div>
                                 <img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px">
                             </a>
@@ -179,14 +180,14 @@
                             </h1>
                             <div class="location">
                                 <a href="car-details.html">
-                                    <i class="flaticon-pin"></i>{{ car.miles }} {{ car.state }} St. {{ car.city }} City,
+                                    <i class="flaticon-pin"></i>{{ car.miles|intcomma }} {{ car.state }} St. {{ car.city }} City,
                                 </a>
                             </div>
                             <ul class="facilities-list clearfix">
                                 <li>{{ car.fuel_type }}</li>
-                                <li>{{ car.mileages }} km</li>
-                                <li>{{ car.movement.title }}</li>
-                                <li>Sport</li>
+                                <li>{{ car.mileages|intcomma }} km</li>
+                                <li>{{ car.transmission.title }}</li>
+                                <li>{{ car.body_style }}</li>
                                 <li>{{ car.color }}</li>
                                 <li>{{ car.year }}</li>
                             </ul>
@@ -229,7 +230,7 @@
                             <div class="facilities-list clearfix">
                                 <ul>
                                     <li>
-                                        <span><i class="flaticon-way"></i></span>{{ car.miles }} km
+                                        <span><i class="flaticon-way"></i></span>{{ car.miles|intcomma}} km
                                     </li>
                                     <li>
                                         <span><i class="flaticon-calendar-1"></i></span>{{ car.year }}
@@ -282,7 +283,7 @@
                         </h1>
                         <div class="location">
                             <a href="car-details.html">
-                                <i class="flaticon-pin"></i>{{ car.mileages }} {{ car.state }} St. {{ car.city }} City,
+                                <i class="flaticon-pin"></i>{{ car.mileages|intcomma }} {{ car.state }} St. {{ car.city }} City,
                             </a>
                         </div>
                     </div>
@@ -291,7 +292,7 @@
                             <p class="cartype">{{ car.body_style }}</p>
                         </div>
                         <div class="pull-right">
-                            <p class="price">${{ car.price }}</p>
+                            <p class="price">${{ car.price|floatformat:2|intcomma }}</p>
                         </div>
                     </div>
                 </div>

@@ -36,5 +36,12 @@ when you define class attr 'choices' at class that inherite from TextChoices
 13- calc discount on the fly
 settartt, override save method
 
+==============================================================
+
+14- vin_no validation
+=============================================================
+15- grouping of features that to render to the single car page ===> into 3 sections
+
+
 
 

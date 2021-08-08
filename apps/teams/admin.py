@@ -20,5 +20,5 @@ class TeamAdmin(admin.ModelAdmin, ThumbnailMixin):
     search_fields = ("id", "emp_id", "fname", "lname", "position")
     list_filter = ("created", "modified", "position")
 
-    def thumbnail(self, obj, *args):
-        return super().thumbnail(obj, is_link=True)
+    def thumbnail(self, obj, is_link=True):
+        return super().thumbnail(obj, is_link=is_link)

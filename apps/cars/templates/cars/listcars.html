@@ -32,33 +32,33 @@
                             <div class="col-lg-6 col-md-6">
                         <div class="car-box-3">
                             <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
+                                <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank" class="car-img">
                                     <div class="tag">For Rent</div>
                                     <div class="price-box">
                                         <span>${{ car.price }}</span>
                                     </div>
-                                    <img class="d-block w-100" src="{{ car.image.url }}" alt="car">
+                                    <img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px">
                                 </a>
                                 <div class="carbox-overlap-wrapper">
                                     <div class="overlap-box">
                                         <div class="overlap-btns-area">
                                             <div class="car-magnify-gallery">
-                                                <a href="img/car/car-1.jpg" class="overlap-btn">
+                                                <a href="{{ car.image.url }}" class="overlap-btn">
                                                     <i class="fa fa-expand"></i>
-                                                    <img class="hidden" src="img/car/car-1.jpg">
+                                                    <img class="hidden" src="{{ car.image.url }}">
                                                 </a>
-                                                <a href="img/car/car-2.jpg" class="hidden">
-                                                    <img class="hidden" src="img/car/car-2.jpg">
-                                                </a>
-                                                <a href="img/car/car-3.jpg" class="hidden">
-                                                    <img class="hidden" src="img/car/car-3.jpg">
-                                                </a>
-                                                <a href="img/car/car-4.jpg" class="hidden">
-                                                    <img class="hidden" src="img/car/car-4.jpg">
-                                                </a>
-                                                <a href="img/car/car-5.jpg" class="hidden">
-                                                    <img class="hidden" src="img/car/car-5.jpg">
-                                                </a>
+                                                {% if car.image2 %}<a href="{{ car.image2.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ car.image2.url }}">
+                                                </a>{% endif %}
+                                                {% if car.image3 %}<a href="{{ car.image3.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ car.image3.url }}">
+                                                </a>{% endif %}
+                                                {% if car.image4 %}<a href="{{ car.image4.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ car.image4.url }}">
+                                                </a>{% endif %}
+                                                {% if car.image5 %}<a href="{{ car.image5.url }}" class="hidden">
+                                                    <img class="hidden" src="{{ car.image5.url }}">
+                                                </a>{% endif %}
                                             </div>
                                         </div>
                                     </div>
@@ -66,10 +66,10 @@
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="car-details.html">{{ car.car_title }}</a>
+                                    <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank">{{ car.car_title }}</a>
                                 </h1>
                                 <div class="location">
-                                    <a href="car-details.html">
+                                    <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank">
                                         <i class="flaticon-pin"></i>{{ car.miles }} {{ car.state }} St. {{ car.city }} City,
                                     </a>
                                 </div>

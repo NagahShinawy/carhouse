@@ -131,14 +131,14 @@
                     <div class="slick-slide-item">
                     <div class="car-box-3">
                         <div class="car-thumbnail">
-                            <a href="car-details.html" class="car-img">
+                            <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank" class="car-img">
                                 <div class="tag-2">Featured</div>
                                 <div class="price-box">
                                     <span class="del"><del>${{ car.price|floatformat:2|intcomma }}</del></span>
                                     <br>
                                     <span>${{ car.price|floatformat:2|intcomma }}</span>
                                 </div>
-                                <img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px">
+                                <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank"><img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px"></a>
                             </a>
                             <div class="carbox-overlap-wrapper">
                                 <div class="overlap-box">
@@ -176,10 +176,10 @@
                         </div>
                         <div class="detail">
                             <h1 class="title">
-                                <a href="car-details.html">{{ car.car_title }}</a>
+                                <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank">{{ car.car_title }}</a>
                             </h1>
                             <div class="location">
-                                <a href="car-details.html">
+                                <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank">
                                     <i class="flaticon-pin"></i>{{ car.miles|intcomma }} {{ car.state }} St. {{ car.city }} City,
                                 </a>
                             </div>
@@ -224,7 +224,7 @@
                 <div class="col-lg-4 col-md-6">
                 <div class="car-box">
                     <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
+                        <a href="{% url 'cars:car-details' pk=car.pk%}"  target="_blank" class="car-img">
                             <div class="tag">For Sale</div>
                             <img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px">
                             <div class="facilities-list clearfix">
@@ -279,10 +279,10 @@
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="car-details.html">{{ car.car_title }}</a>
+                            <a href="{% url 'cars:car-details' pk=car.pk%}" target="_blank">{{ car.car_title }}</a>
                         </h1>
                         <div class="location">
-                            <a href="car-details.html">
+                            <a href="{% url 'cars:car-details' pk=car.pk%}" target="_blank">
                                 <i class="flaticon-pin"></i>{{ car.mileages|intcomma }} {{ car.state }} St. {{ car.city }} City,
                             </a>
                         </div>

@@ -12,6 +12,7 @@ from apps.core.db.models import (
     ImageModelMixin,
 )
 from apps.core.db.models.mixin import model_directory
+from apps.core.utils import validators as _validator
 
 
 class ChoiceManager:
@@ -195,7 +196,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
         choices=Passengers.choices, verbose_name=_("passengers")
     )
 
-    vin_no = models.CharField(max_length=100, verbose_name=_("vin no"))
+    vin_no = models.CharField(max_length=100, verbose_name=_("vin no"), validators=[_validator.validate_vin_no])
 
     mileages = models.BigIntegerField(verbose_name=_("mileage"))
 

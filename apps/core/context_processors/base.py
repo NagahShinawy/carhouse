@@ -26,9 +26,7 @@ def fax(request):
 
 
 def working_hours(request):
-    return {
-        "working_hours": WORKING_HOURS
-    }
+    return {"working_hours": WORKING_HOURS}
 
 
 def car_urls(request):

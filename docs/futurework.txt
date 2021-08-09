@@ -1,6 +1,6 @@
 1- adding slug to car model
 =================================================================
-2- vin_no validation
+2- vin_no validation using class Field with custom error messege
 
 =================================================================
 3- calc discount on the fly

@@ -26,4 +26,4 @@ class CarManager(models.Manager):
         return super().filter(is_features=True)
 
     def recently_cars(self):
-        return self.all_cars().order_by("-created")[:self.TOP_RECENTLY_ADDED]
+        return self.all_cars().order_by("-created")[: self.TOP_RECENTLY_ADDED]

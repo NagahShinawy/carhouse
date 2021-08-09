@@ -2,7 +2,7 @@
 created by Nagaj at 04/08/2021
 """
 from datetime import date
-
+import re
 from django.core import validators
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -28,7 +28,6 @@ class EmployeeIDField(models.CharField):
 
 
 class YearField(models.IntegerField):
-
     MIN_YEAR = 1950
     MAX_YEAR = get_current_year()
 
@@ -42,3 +41,17 @@ class YearField(models.IntegerField):
 
     def __str__(self):
         return super(YearField, self).__str__()
+
+
+class VinNumberField(models.CharField):
+    VIN_NUMBER_LEN = 17
+
+    def __init__(self, *args, **kwargs):
+        kwargs["max_length"] = self.VIN_NUMBER_LEN
+        kwargs["validators"] = [
+            validators.RegexValidator("^[A-HJ-NPR-Z0-9]{17}$", flags=re.IGNORECASE)
+        ]
+        super().__init__(*args, **kwargs)
+
+    def __str__(self):
+        return super(VinNumberField, self).__str__()

@@ -13,6 +13,7 @@ from apps.core.db.models import (
 )
 from apps.core.db.models.mixin import model_directory
 from apps.core.utils import validators as _validator
+from apps.core.db.models.fields import VinNumberField
 
 
 class ChoiceManager:
@@ -181,7 +182,10 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
     engine = models.CharField(max_length=100, verbose_name=_("engine"))
 
     transmission = models.CharField(
-        max_length=10, choices=Transmission.choices, default=Transmission.automatic, verbose_name=_("transmission")
+        max_length=10,
+        choices=Transmission.choices,
+        default=Transmission.automatic,
+        verbose_name=_("transmission"),
     )
 
     interior = models.CharField(max_length=100, verbose_name=_("interior"))
@@ -196,8 +200,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
         choices=Passengers.choices, verbose_name=_("passengers")
     )
 
-    vin_no = models.CharField(max_length=100, verbose_name=_("vin no"), validators=[_validator.validate_vin_no])
-
+    vin_no = VinNumberField(verbose_name=_("VIN number"))
     mileages = models.BigIntegerField(verbose_name=_("mileage"))
 
     fuel_type = models.CharField(

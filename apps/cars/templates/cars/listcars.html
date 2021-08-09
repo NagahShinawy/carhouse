@@ -36,7 +36,7 @@
                                 <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank" class="car-img">
                                     <div class="tag">For Rent</div>
                                     <div class="price-box">
-                                        <span>${{ car.price }}</span>
+                                        <span>${{ car.price|intcomma }}</span>
                                     </div>
                                     <img class="d-block w-100" src="{{ car.image.url }}" alt="car" style="max-height:262px; min-height: 262px">
                                 </a>

@@ -27,6 +27,9 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
+handler404 = "apps.core.error_handlers.not_found"
+
+
 # debug toolbar
 if settings.DEBUG and settings.DEBUG_TOOLBAR:
     try:

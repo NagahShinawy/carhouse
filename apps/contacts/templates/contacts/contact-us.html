@@ -68,7 +68,7 @@
                             </div>
                             <div class="detail">
                                 <h5>Phone:</h5>
-                                <p><a href="#">{{ phone }}</a></p>
+                                <p><a href="tel:{{ phone }}">{{ phone }}</a></p>
                             </div>
                         </div>
                         <div class="ci-box">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="detail">
                                 <h5>Email:</h5>
-                                <p><a href="#">{{ email }}</a></p>
+                                <p><a href="mailto:{{ email }}">{{ email }}</a></p>
                             </div>
                         </div>
                         <div class="ci-box">
@@ -86,7 +86,7 @@
                             </div>
                             <div class="detail">
                                 <h5>Web:</h5>
-                                <p><a href="#">{{ website }}</a></p>
+                                <p><a href="{% url 'cars:index' %}">{{ website }}</a></p>
                             </div>
                         </div>
                         <div class="ci-box mb-0">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="detail">
                                 <h5>Fax:</h5>
-                                <p><a href="#">{{ fax }}</a></p>
+                                <p><a href="fax:{{ fax }}">{{ fax }}</a></p>
                             </div>
                         </div>
                     </div>

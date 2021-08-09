@@ -93,6 +93,7 @@ TEMPLATES = [
                 "apps.core.context_processors.base.website",
                 "apps.core.context_processors.base.fax",
                 "apps.core.context_processors.base.phone",
+                "apps.core.context_processors.base.working_hours",
             ],
         },
     },

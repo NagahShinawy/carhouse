@@ -43,5 +43,10 @@ settartt, override save method
 15- grouping of features that to render to the single car page ===> into 3 sections
 
 
+=================================================================
+
+16- how to add custom context_processor that return all info details [email, phone, website, fax]
+
+
 
 

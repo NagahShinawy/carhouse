@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    'django.contrib.humanize',
+    "django.contrib.humanize",
 ]
 
 # local apps
@@ -61,9 +60,7 @@ INSTALLED_APPS += [
 ]
 
 if DEBUG and DEBUG_TOOLBAR:
-    INSTALLED_APPS += [
-        "debug_toolbar"
-    ]
+    INSTALLED_APPS += ["debug_toolbar"]
     MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 else:
     MIDDLEWARE = []
@@ -91,6 +88,11 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # opensooq contact info
+                "apps.core.context_processors.base.email",
+                "apps.core.context_processors.base.website",
+                "apps.core.context_processors.base.fax",
+                "apps.core.context_processors.base.phone",
             ],
         },
     },
@@ -118,9 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 # Internationalization
@@ -141,8 +143,10 @@ USE_TZ = True
 
 # static
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR.parent / 'collectstatic'
-STATICFILES_DIRS = [BASE_DIR.parent / 'static', ]
+STATIC_ROOT = BASE_DIR.parent / "collectstatic"
+STATICFILES_DIRS = [
+    BASE_DIR.parent / "static",
+]
 
 # media
 MEDIA_URL = "/media/"
@@ -159,20 +163,14 @@ LOGGING = {
             "format": "[{levelname}] {asctime} in {pathname}/{funcName}: {message}",
             "style": "{",
         },
-        "simple": {
-            "format": "[{levelname}] {message}",
-            "style": "{",
-        },
+        "simple": {"format": "[{levelname}] {message}", "style": "{",},
     },
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
-    "root": {
-        "handlers": ["console"],
-        "level": "DEBUG",
-    },
+    "root": {"handlers": ["console"], "level": "DEBUG",},
 }
 
 # db
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

@@ -1,0 +1,10 @@
+1- adding slug to car model
+=================================================================
+2- vin_no validation
+
+=================================================================
+3- calc discount on the fly
+settartt, override save method
+=================================================================
+
+4- grouping of features that to render to the single car page ===> into 3 sections

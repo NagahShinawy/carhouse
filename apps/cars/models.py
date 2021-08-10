@@ -12,7 +12,6 @@ from apps.core.db.models import (
     ImageModelMixin,
 )
 from apps.core.db.models.mixin import model_directory
-from apps.core.utils import validators as _validator
 from apps.core.db.models.fields import VinNumberField
 
 

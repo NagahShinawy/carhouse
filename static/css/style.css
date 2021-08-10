@@ -9769,6 +9769,10 @@ a.nav-link.active{
 }
 
 
+a.disabled-arrow:hover {
+    cursor: not-allowed !important;
+    background: #fff !important;
+}
 
 
 

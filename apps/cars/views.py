@@ -36,7 +36,7 @@ class CarListView(ListView):
     template_name = "cars/listcars.html"
     model = Car
     context_object_name = "cars"
-    paginate_by = 5
+    paginate_by = 10
 
 
 class CarDetailView(DetailView):

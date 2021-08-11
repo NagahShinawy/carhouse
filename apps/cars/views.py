@@ -45,12 +45,13 @@ class CarDetailView(DetailView):
 
 
 class CarSearchView(ListView):
-    template_name = 'cars/listcars.html'
+    template_name = 'cars/search.html'
     model = Car
     queryset = Car.objects.none()
     context_object_name = "cars"
 
     def get_queryset(self):
-        car_title = self.request.GET.get("car_title")
+        car_title = self.request.GET.get("name")
         cars = Car.objects.search_car(car_title__icontains=car_title)
+        logging.info(f"Getting search car(s) {cars}")
         return cars

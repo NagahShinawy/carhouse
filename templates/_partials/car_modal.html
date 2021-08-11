@@ -1,13 +1,16 @@
 {% load static %}
-<div class="car-model-2">
-    <div class="modal fade" id="carOverviewModal" tabindex="-1" role="dialog" aria-labelledby="carOverviewModalLabel"
+{% load humanize %}
+{% if cars %}
+    {% for car in cars %}
+    <div class="car-model-2">
+    <div class="modal fade" id="{{ car.pk }}" tabindex="-1" role="dialog" aria-labelledby="carOverviewModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="modal-title" id="carOverviewModalLabel">
+                    <div class="modal-title" id="{{ car.pk }}">
                         <h4>Explore Your Dream Car</h4>
-                        <h5><i class="flaticon-pin"></i> 123 Kathal St. Tampa City,</h5>
+                        <h5><i class="flaticon-pin"></i>{{ car.miles|intcomma }} {{ car.state }} St. {{ car.city }},</h5>
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -17,15 +20,16 @@
                     <div class="row modal-raw">
                         <div class="col-lg-6 modal-left">
                             <div class="item active">
-                                <img src="{% static 'img/car-13.jpg' %}" alt="best-car" class="img-fluid modalLabel-1">
-                                <img src="{% static 'img/car-14.jpg' %}" alt="best-car" class="img-fluid modalLabel-2">
+                                    <img src="{{ car.image.url }}" alt="best-car" class="img-fluid modalLabel-1">
+
+                                <img src="{{ car.image.url }}" alt="best-car" class="img-fluid modalLabel-2">
                                 <div class="sobuz">
                                     <div class="price-box" style="padding-bottom: 5px;">
-                                        <span class="del-2">$1050.00</span>
+                                        <span class="del-2">${{ car.price|floatformat:2|intcomma }}</span>
                                     </div>
                                     <div class="">
-                                        <a href="car-details.html"
-                                           class="btn btn-md btn-round btn-theme">Convertible</a>
+                                        <a href="{% url 'cars:car-details' pk=car.pk %}"
+                                           class="btn btn-md btn-round btn-theme">{{ car.body_style }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,14 +40,9 @@
                                     <h3>Features</h3>
                                     <div class="features">
                                         <ul class="bullets">
-                                            <li>Cruise Control</li>
-                                            <li>Airbags</li>
-                                            <li>Air Conditioning</li>
-                                            <li>Alarm System</li>
-                                            <li>Audio Interface</li>
-                                            <li>CDR Audio</li>
-                                            <li>Seat Heating</li>
-                                            <li>ParkAssist</li>
+                                            {%  for feature in car.features %}
+                                                <li>{{ car.feature }}</li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </section>
@@ -54,17 +53,16 @@
                                         <li>Year</li>
                                         <li>Condition</li>
                                         <li>Price</li>
-                                        <li>Audi</li>
-                                        <li>2020</li>
-                                        <li>Brand New</li>
-                                        <li>$178,000</li>
+                                        <li>{{ car.model }}</li>
+                                        <li>{{ car.year }}</li>
+                                        <li>FIX ME</li>
+                                        <li>${{ car.price|floatformat:2|intcomma }}</li>
                                     </ul>
                                 </section>
                                 <div class="description">
                                     <h3>Description</h3>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard.</p>
-                                    <a href="car-details.html" class="btn btn-md btn-round btn-theme">Show Detail</a>
+                                    <p>{{ car.description|safe }}</p>
+                                    <a href="{% url 'cars:car-details' pk=car.pk %}" class="btn btn-md btn-round btn-theme">Show Detail</a>
                                 </div>
                             </div>
                         </div>
@@ -74,3 +72,5 @@
         </div>
     </div>
 </div>
+    {% endfor %}
+{% endif %}

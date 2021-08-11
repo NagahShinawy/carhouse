@@ -29,4 +29,4 @@ class CarManager(models.Manager):
         return self.all_cars().order_by("-created")[: self.TOP_RECENTLY_ADDED]
 
     def search_car(self, **kwargs):
-        return super().filter(**kwargs)
+        return super().filter(**kwargs).order_by("-created")

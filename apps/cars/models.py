@@ -184,6 +184,7 @@ class Transmission(models.TextChoices):
 class Location(models.TextChoices):
     US = "united state", _("United State")
     UK = "united kingdom", _("United Kingdom")
+    CANADA = "canada", _("Canada")
 
 
 class Use(models.TextChoices):

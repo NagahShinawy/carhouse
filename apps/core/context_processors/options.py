@@ -7,7 +7,7 @@ current_year = datetime.today().year
 
 
 def get_brands(request):
-    return {"brands": [brand[-1] for brand in Brand.choices]}
+    return {"brands": [brand[-1] for brand in Brand.choices if brand[0]]}
 
 
 def get_makes(request):

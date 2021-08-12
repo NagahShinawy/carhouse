@@ -51,6 +51,9 @@ class CarSearchView(ListView):
     context_object_name = "cars"
 
     def get_queryset(self):
+        query_params = self.request.GET
+        if not query_params:
+            return Car.objects.all_cars()
         car_title = self.request.GET.get("name")
         cars = Car.objects.search_car(car_title__icontains=car_title)
         logging.info(f"Getting search car(s) {cars}")

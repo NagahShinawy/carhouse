@@ -14,3 +14,7 @@ settartt, override save method
 5- generate all image urls found for single car to for over in the template instead of using if multiple time
 5- def car_urls(request):
     pass
+
+==========================================================
+
+6- adding paganation to search page

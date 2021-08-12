@@ -47,6 +47,15 @@ settartt, override save method
 
 16- how to add custom context_processor that return all info details [email, phone, website, fax]
 
+==================================================================
+
+17- fixing bug for related selection, select company ==> show related cars models to that company
+
+=====================================================================
+
+18- adding slug
+
+
 
 
 

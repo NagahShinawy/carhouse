@@ -28,7 +28,7 @@
                                         <span class="del-2">${{ car.price|floatformat:2|intcomma }}</span>
                                     </div>
                                     <div class="">
-                                        <a href="{% url 'cars:car-details' pk=car.pk %}"
+                                        <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank"
                                            class="btn btn-md btn-round btn-theme">{{ car.body_style }}</a>
                                     </div>
                                 </div>
@@ -40,8 +40,9 @@
                                     <h3>Features</h3>
                                     <div class="features">
                                         <ul class="bullets">
+
                                             {%  for feature in car.features %}
-                                                <li>{{ car.feature }}</li>
+                                                <li>{{ forloop.counter }}-{{ feature }}</li>
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -62,7 +63,7 @@
                                 <div class="description">
                                     <h3>Description</h3>
                                     <p>{{ car.description|safe }}</p>
-                                    <a href="{% url 'cars:car-details' pk=car.pk %}" class="btn btn-md btn-round btn-theme">Show Detail</a>
+                                    <a href="{% url 'cars:car-details' pk=car.pk %}" target="_blank" class="btn btn-md btn-round btn-theme">Show Detail</a>
                                 </div>
                             </div>
                         </div>

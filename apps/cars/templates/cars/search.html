@@ -47,8 +47,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-location" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Select Location</option>
-                                    <option>United States</option>
-                                    <option>United Kingdom</option>
+                                    {% for location in locations %}
+                                        <option>{{ location }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>

@@ -101,15 +101,68 @@ class Passengers(ChoiceManager):
 
 
 class Fuel(models.TextChoices):
-    gasoline = "gasoline", _("Gasoline")
-    diesel = "diesel", _("Diesel")
-    Bio = "bio", _("Bio")
-    ethanol = "ethanol", _("Ethanol")
+    GASOLINE = "gasoline", _("Gasoline")
+    DIESEL = "diesel", _("Diesel")
+    BIO = "bio", _("Bio")
+    ETHANOL = "ethanol", _("Ethanol")
 
 
 class Owner(ChoiceManager):
     MAX_OWNERS = 10
     choices = ((i, str(i)) for i in range(1, MAX_OWNERS + 1))
+
+
+class Brand(models.TextChoices):
+    ACURA = "acura", _("Acura")
+    ALFA = "alfa", _("Alfa")
+    BMW = "bmw", _("BMW")
+    AUDI = "audi", _("Audi")
+    CHEVROLET = "chevrolet", _("Chevrolet")
+    FIAT = "fiat", _("Fiat")
+    FORD = "ford", _("Ford")
+    GMC = "gmc", _("GMC")
+    HONDA = "honda", _("Honda")
+    HYUNDAI = "hyundai", _("Hyundai")
+    JEEP = "jeep", _("JEEP")
+    KIA = "kia", _("KIA")
+    LEXUS = "lexus", _("Lexus")
+    MAZDA = "mazda", _("Mazda")
+    MERCEDES_BENZ = "mercedes-benz", _("Mercedes-Benz")
+    NISSAN = "nissan", _("Nissan")
+    POLESTAR = "polestar", _("Polestar")
+    RAM = "ram", _("RAM")
+    SUZUKI = "suzuki", _("Suzuki")
+    TESLA = "tesla", _("Tesla")
+    TOYOTA = "toyota", _("Toyota")
+    VOLVO = "volvo", _("Volvo")
+    __empty__ = _("(Unknown)")
+
+
+class Make(models.TextChoices):
+    HONDA = "honda", _("Honda Motor Company")
+    STELLANTIS = "Stellantis", _("Stellantis")
+    VOLKSWAGEN = "Volkswagen Group", _("Volkswagen Group")
+    BMW = "BMW Group", _("BMW Group")
+    GENERAL = "General Motors", _("General Motors")
+    FORD = "Ford Motor Co.", _("Ford Motor Co.")
+    HYUNDAI = "Hyundai Motor Group", _("Hyundai Motor Group")
+    TOYOTA = "Toyota Motor Corp.", _("Toyota Motor Corp.")
+    MAZDA = "Mazda Motor Corp.", _("Mazda Motor Corp.")
+    DAIMLER_AG = "Daimler AG", _("Daimler AG")
+    RENAULT_NISSAN_MITSUBISHI = (
+        "Renault-Nissan-Mitsubishi Alliance",
+        _("Renault-Nissan-Mitsubishi Alliance"),
+    )
+    ZHEJIANG_GEELY_HOLDING = (
+        "Zhejiang Geely Holding Group",
+        _("Zhejiang Geely Holding Group"),
+    )
+    ZHEJIANG = "Zhejiang Stellantis", _("Zhejiang Stellantis")
+    SUZUKI = (
+        "Suzuki Motor Corp. Owns a small stake in Toyota",
+        _("Suzuki Motor Corp. Owns a small stake in Toyota"),
+    )
+    TESLA = "Tesla Inc.", _("Tesla Inc.")
 
 
 class Year:
@@ -124,13 +177,37 @@ class Year:
 
 
 class Transmission(models.TextChoices):
-    manual = "manual", _("Manual")
-    automatic = "automatic", _("Automatic")
+    MANUAL = "manual", _("Manual")
+    AUTOMATIC = "automatic", _("Automatic")
+
+
+class Location(models.TextChoices):
+    US = "united state", _("United State")
+    UK = "united kingdom", _("United Kingdom")
+
+
+class Use(models.TextChoices):
+    NEW = "new", _("New")
+    UK = "used", _("Used")
+
+
+class Type(models.TextChoices):
+    SEDAN = "sedan", _("Sedan")
+    SPORTS = "sports", _("Sports")
+    HATCHBACK = "hatchback", _("Hatchback")
+    PICKUP_TRUCK = "pickup truck", _("Pickup Truck")
+    SUV = "suv", _("SUV")
 
 
 class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     car_title = models.CharField(max_length=255, verbose_name=_("car title"))
+    brand = models.CharField(
+        max_length=50,
+        choices=Brand.choices,
+        verbose_name=_("brand"),
+        default=Brand.__empty__,
+    )
 
     state = models.CharField(
         choices=State.choices, verbose_name=_("state"), max_length=50
@@ -183,7 +260,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
     transmission = models.CharField(
         max_length=10,
         choices=Transmission.choices,
-        default=Transmission.automatic,
+        default=Transmission.AUTOMATIC,
         verbose_name=_("transmission"),
     )
 
@@ -215,6 +292,19 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
     discount = models.PositiveSmallIntegerField(
         default=0,
         validators=[validators.MinValueValidator(0), validators.MaxValueValidator(100)],
+    )
+
+    location = models.CharField(
+        max_length=20,
+        choices=Location.choices,
+        default=Location.US,
+        verbose_name=_("location"),
+    )
+    use = models.CharField(
+        max_length=20, choices=Use.choices, default=Use.NEW, verbose_name=_("use")
+    )
+    type = models.CharField(
+        max_length=20, choices=Type.choices, default=Type.SPORTS, verbose_name=_("type")
     )
 
     objects = managers.CarManager()

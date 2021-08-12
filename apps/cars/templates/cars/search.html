@@ -27,10 +27,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-brand" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Select Brand</option>
-                                    <option>Audi</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Nissan</option>
+                                    {% for brand in brands %}
+                                        <option>{{ brand }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
@@ -38,10 +37,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-make" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Select Make</option>
-                                    <option>BMW</option>
-                                    <option>Honda</option>
-                                    <option>Lamborghini Huracán</option>
-                                    <option>Sports Car</option>
+                                    {% for make in makes %}
+                                        <option>{{ make }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
@@ -58,10 +56,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-year" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Select Year</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
+                                    {% for year in years %}
+                                        <option>{{ year }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
@@ -71,8 +68,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-type" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Select Type Of Car</option>
-                                    <option>New Car</option>
-                                    <option>Used Car</option>
+                                    {% for use in uses %}
+                                        <option>{{ use }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
@@ -80,8 +78,9 @@
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="transmission" tabindex="-98">
                                     <option disabled="disabled" selected="selected">Transmission</option>
-                                    <option>Automatic</option>
-                                    <option>Manual</option>
+                                    {% for transmission in transmissions %}
+                                        <option>{{ transmission }}</option>
+                                    {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>

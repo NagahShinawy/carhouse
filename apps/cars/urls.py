@@ -3,7 +3,14 @@ created by Nagaj at 02/08/2021
 """
 
 from django.urls import path
-from .views import IndexView, AboutView, ServicesView, CarListView, CarDetailView, CarSearchView
+from .views import (
+    IndexView,
+    AboutView,
+    ServicesView,
+    CarListView,
+    CarDetailView,
+    CarSearchView,
+)
 
 app_name = "cars"
 

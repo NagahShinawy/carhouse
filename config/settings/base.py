@@ -47,7 +47,6 @@ INSTALLED_APPS += [
     "apps.teams",
 ]
 
-
 # third party
 INSTALLED_APPS += [
     "ckeditor",
@@ -94,6 +93,15 @@ TEMPLATES = [
                 "apps.core.context_processors.base.fax",
                 "apps.core.context_processors.base.phone",
                 "apps.core.context_processors.base.working_hours",
+
+                # car options data
+                "apps.core.context_processors.options.get_brands",  # brands
+                "apps.core.context_processors.options.get_makes",  # makes
+                "apps.core.context_processors.options.get_years_range",  # years
+                "apps.core.context_processors.options.get_transmissions",  # transmissions
+                "apps.core.context_processors.options.get_locations",  # locations
+                "apps.core.context_processors.options.car_type",  # types
+                "apps.core.context_processors.options.get_uses",  # uses
             ],
         },
     },
@@ -121,9 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 # Internationalization
@@ -154,7 +162,6 @@ MEDIA_URL = "/media/"
 MEDIA_DIR = BASE_DIR.parent / "media"
 MEDIA_ROOT = MEDIA_DIR
 
-
 # Logging
 LOGGING = {
     "version": 1,
@@ -165,14 +172,13 @@ LOGGING = {
             "style": "{",
             "datefmt": "%d/%b/%Y %H:%M:%S",
         },
-        "simple": {"format": "[{levelname}] {message}", "style": "{",},
+        "simple": {"format": "[{levelname}] {message}", "style": "{", },
     },
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
-    "root": {"handlers": ["console"], "level": "DEBUG",},
+    "root": {"handlers": ["console"], "level": "DEBUG", },
 }
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

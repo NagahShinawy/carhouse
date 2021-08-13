@@ -50,9 +50,11 @@ class CarSearchView(ListView):
     model = Car
     queryset = Car.objects.none()
     context_object_name = "cars"
+    MIN_PRICE = 0
+    MAX_PRICE = 150000
 
-    @staticmethod
-    def ger_query_params(params: QueryDict) -> dict:
+    @classmethod
+    def ger_query_params(cls, params: QueryDict) -> dict:
         parsed_params = dict()
         brand = params.get("brand")
         make = params.get("make")
@@ -61,7 +63,6 @@ class CarSearchView(ListView):
         type_ = params.get("type")
         use = params.get("use")
         transmission = params.get("transmission")
-        price_range = params.get("price")
         if brand:
             parsed_params["brand__icontains"] = brand
 
@@ -83,8 +84,10 @@ class CarSearchView(ListView):
         if transmission:
             parsed_params["transmission__icontains"] = transmission
 
-        if price_range:
-            parsed_params["price"] = price_range
+        parsed_params["price__range"] = [
+            params.get("min_price", cls.MIN_PRICE),
+            params.get("max_price", cls.MAX_PRICE),
+        ]
 
         return parsed_params
 

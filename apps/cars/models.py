@@ -228,7 +228,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     conditions = models.CharField(max_length=100, verbose_name=_("conditions"))
 
-    price = models.FloatField(verbose_name=_("price"))
+    price = models.IntegerField(verbose_name=_("price"))
 
     description = RichTextField(max_length=255, verbose_name=_("description"))
 

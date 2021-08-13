@@ -4,6 +4,7 @@ created by Nagaj at 06/08/2021
 
 
 from django.db import models
+from django.db.models import Q
 
 
 class CarManager(models.Manager):
@@ -30,3 +31,6 @@ class CarManager(models.Manager):
 
     def search_car(self, **kwargs):
         return super().filter(**kwargs).order_by("-created")
+
+    def search_by_name_or_description(self, title, description):
+        return super().filter(Q(car_title__icontains=title) | Q(description__icontains=description))

@@ -25,6 +25,7 @@ class CarAdmin(admin.ModelAdmin, ThumbnailMixin):
         "transmission",
         "engine",
         "body_style",
+        "description"
     )
 
     def thumbnail(self, obj, *args):

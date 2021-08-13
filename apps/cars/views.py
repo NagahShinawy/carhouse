@@ -1,5 +1,6 @@
 import logging
 from django.views.generic import TemplateView, DetailView, ListView
+from django.http import QueryDict
 from apps.teams.models import Team
 from apps.cars.models import Car
 
@@ -50,11 +51,50 @@ class CarSearchView(ListView):
     queryset = Car.objects.none()
     context_object_name = "cars"
 
+    @staticmethod
+    def ger_query_params(params: QueryDict) -> dict:
+        parsed_params = dict()
+        brand = params.get("brand")
+        make = params.get("make")
+        location = params.get("location")
+        year = params.get("year")
+        type_ = params.get("type")
+        transmission = params.get("transmission")
+        price_range = params.get("price")
+        if brand:
+            parsed_params["brand__icontains"] = brand
+
+        if make:
+            parsed_params["make__icontains"] = make
+
+        if location:
+            parsed_params["location__icontains"] = location
+
+        if year:
+            parsed_params["year"] = year
+
+        if type_:
+            parsed_params["type__icontains"] = type_
+
+        if transmission:
+            parsed_params["transmission__icontains"] = transmission
+
+        if price_range:
+            parsed_params["price"] = price_range
+
+        return parsed_params
+
     def get_queryset(self):
-        query_params = self.request.GET
-        if not query_params:
-            return Car.objects.all_cars()
-        car_title = self.request.GET.get("name")
-        cars = Car.objects.search_car(car_title__icontains=car_title)
+        title = self.request.GET.get("name")
+        car_title = title if title else ""
+        description = car_title
+        cars = Car.objects.search_by_name_or_description(car_title, description)
+
+        parsed_params = self.ger_query_params(self.request.GET)  # todo: optimized this
+        if parsed_params or title:
+            cars = cars.filter(**parsed_params)
+        else:
+            cars = Car.objects.all_cars()
+
         logging.info(f"Getting search car(s) {cars}")
         return cars

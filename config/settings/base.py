@@ -93,7 +93,6 @@ TEMPLATES = [
                 "apps.core.context_processors.base.fax",
                 "apps.core.context_processors.base.phone",
                 "apps.core.context_processors.base.working_hours",
-
                 # car options data
                 "apps.core.context_processors.options.get_brands",  # brands
                 "apps.core.context_processors.options.get_makes",  # makes
@@ -129,9 +128,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 # Internationalization
@@ -172,12 +171,12 @@ LOGGING = {
             "style": "{",
             "datefmt": "%d/%b/%Y %H:%M:%S",
         },
-        "simple": {"format": "[{levelname}] {message}", "style": "{", },
+        "simple": {"format": "[{levelname}] {message}", "style": "{",},
     },
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
-    "root": {"handlers": ["console"], "level": "DEBUG", },
+    "root": {"handlers": ["console"], "level": "DEBUG",},
 }
 
 # Default primary key field type

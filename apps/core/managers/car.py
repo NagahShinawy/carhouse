@@ -33,7 +33,6 @@ class CarManager(models.Manager):
         return super().filter(**kwargs).order_by("-created")
 
     def search_by_name_or_description(self, title, description):
-        return super().filter(Q(car_title__icontains=title) | Q(description__icontains=description))
-
-    def search_by_name_or_description(self, title, description):
-        return super().filter(Q(car_title__icontains=title) | Q(description__icontains=description))
+        return super().filter(
+            Q(car_title__icontains=title) | Q(description__icontains=description)
+        )

@@ -56,7 +56,7 @@ class CarSearchView(ListView):
         parsed_params = dict()
         brand = params.get("brand")
         make = params.get("make")
-        location = params.get("location")
+        location = params.get("select-location")
         year = params.get("year")
         type_ = params.get("type")
         transmission = params.get("transmission")

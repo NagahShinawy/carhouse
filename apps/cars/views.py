@@ -85,12 +85,13 @@ class CarSearchView(ListView):
         return parsed_params
 
     def get_queryset(self):
+        # todo: optimized this
         title = self.request.GET.get("name")
         car_title = title if title else ""
         description = car_title
         cars = Car.objects.search_by_name_or_description(car_title, description)
 
-        parsed_params = self.ger_query_params(self.request.GET)  # todo: optimized this
+        parsed_params = self.ger_query_params(self.request.GET)
         if parsed_params or title:
             cars = cars.filter(**parsed_params)
         else:

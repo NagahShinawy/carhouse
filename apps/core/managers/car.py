@@ -34,3 +34,6 @@ class CarManager(models.Manager):
 
     def search_by_name_or_description(self, title, description):
         return super().filter(Q(car_title__icontains=title) | Q(description__icontains=description))
+
+    def search_by_name_or_description(self, title, description):
+        return super().filter(Q(car_title__icontains=title) | Q(description__icontains=description))

@@ -70,7 +70,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="use" tabindex="-98">
-                                <option disabled="disabled" selected="selected">{% if request.GET.use %} {{ request.GET.location }} {% else %} Select Type Of Car {% endif %}</option>
+                                <option disabled="disabled" selected="selected">{% if request.GET.use %} {{ request.GET.use }} {% else %} Select Type Of Car {% endif %}</option>
                                     {% for use in uses %}
                                         <option>{{ use }}</option>
                                     {% endfor %}

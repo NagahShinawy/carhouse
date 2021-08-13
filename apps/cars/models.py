@@ -101,10 +101,10 @@ class Passengers(ChoiceManager):
 
 
 class Fuel(models.TextChoices):
-    GASOLINE = "gasoline", _("Gasoline")
-    DIESEL = "diesel", _("Diesel")
-    BIO = "bio", _("Bio")
-    ETHANOL = "ethanol", _("Ethanol")
+    GASOLINE = "Gasoline", _("Gasoline")
+    DIESEL = "Diesel", _("Diesel")
+    BIO = "Bio", _("Bio")
+    ETHANOL = "Ethanol", _("Ethanol")
 
 
 class Owner(ChoiceManager):
@@ -113,33 +113,33 @@ class Owner(ChoiceManager):
 
 
 class Brand(models.TextChoices):
-    ACURA = "acura", _("Acura")
-    ALFA = "alfa", _("Alfa")
-    BMW = "bmw", _("BMW")
-    AUDI = "audi", _("Audi")
-    CHEVROLET = "chevrolet", _("Chevrolet")
-    FIAT = "fiat", _("Fiat")
-    FORD = "ford", _("Ford")
-    GMC = "gmc", _("GMC")
-    HONDA = "honda", _("Honda")
-    HYUNDAI = "hyundai", _("Hyundai")
-    JEEP = "jeep", _("JEEP")
-    KIA = "kia", _("KIA")
-    LEXUS = "lexus", _("Lexus")
-    MAZDA = "mazda", _("Mazda")
-    MERCEDES_BENZ = "mercedes-benz", _("Mercedes-Benz")
-    NISSAN = "nissan", _("Nissan")
-    POLESTAR = "polestar", _("Polestar")
-    RAM = "ram", _("RAM")
-    SUZUKI = "suzuki", _("Suzuki")
-    TESLA = "tesla", _("Tesla")
-    TOYOTA = "toyota", _("Toyota")
-    VOLVO = "volvo", _("Volvo")
+    ACURA = "Acura", _("Acura")
+    ALFA = "Alfa", _("Alfa")
+    BMW = "BMW", _("BMW")
+    AUDI = "Audi", _("Audi")
+    CHEVROLET = "Chevrolet", _("Chevrolet")
+    FIAT = "Fiat", _("Fiat")
+    FORD = "Ford", _("Ford")
+    GMC = "GMC", _("GMC")
+    HONDA = "Honda", _("Honda")
+    HYUNDAI = "Hyundai", _("Hyundai")
+    JEEP = "JEEP", _("JEEP")
+    KIA = "KIA", _("KIA")
+    LEXUS = "Lexus", _("Lexus")
+    MAZDA = "Mazda", _("Mazda")
+    MERCEDES_BENZ = "Mercedes-Benz", _("Mercedes-Benz")
+    NISSAN = "Nissan", _("Nissan")
+    POLESTAR = "Polestar", _("Polestar")
+    RAM = "RAM", _("RAM")
+    SUZUKI = "Suzuki", _("Suzuki")
+    TESLA = "Tesla", _("Tesla")
+    TOYOTA = "Toyota", _("Toyota")
+    VOLVO = "Volvo", _("Volvo")
     __empty__ = _("(Unknown)")
 
 
 class Make(models.TextChoices):
-    HONDA = "honda", _("Honda Motor Company")
+    HONDA = "Honda Motor Company", _("Honda Motor Company")
     STELLANTIS = "Stellantis", _("Stellantis")
     VOLKSWAGEN = "Volkswagen Group", _("Volkswagen Group")
     BMW = "BMW Group", _("BMW Group")
@@ -178,27 +178,27 @@ class Year:
 
 
 class Transmission(models.TextChoices):
-    MANUAL = "manual", _("Manual")
-    AUTOMATIC = "automatic", _("Automatic")
+    MANUAL = "Manual", _("Manual")
+    AUTOMATIC = "Automatic", _("Automatic")
 
 
 class Location(models.TextChoices):
-    US = "united state", _("United State")
+    US = "United State", _("United State")
     UK = "united kingdom", _("United Kingdom")
-    CANADA = "canada", _("Canada")
+    CANADA = "Canada", _("Canada")
 
 
 class Use(models.TextChoices):
-    NEW = "new", _("New")
-    UK = "used", _("Used")
+    NEW = "New", _("New")
+    UK = "Used", _("Used")
 
 
 class Type(models.TextChoices):
-    SEDAN = "sedan", _("Sedan")
-    SPORTS = "sports", _("Sports")
-    HATCHBACK = "hatchback", _("Hatchback")
-    PICKUP_TRUCK = "pickup truck", _("Pickup Truck")
-    SUV = "suv", _("SUV")
+    SEDAN = "Sedan", _("Sedan")
+    SPORTS = "Sports", _("Sports")
+    HATCHBACK = "Hatchback", _("Hatchback")
+    PICKUP_TRUCK = "Pickup Truck", _("Pickup Truck")
+    SUV = "SUV", _("SUV")
 
 
 class Car(TimeStampModelMixin, ImageModelMixin, models.Model):

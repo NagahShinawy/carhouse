@@ -21,7 +21,7 @@
     <div class="container">
         <div class="search-area-inner">
             <div class="search-contents">
-                <form method="GET">
+                <form action="{% url 'cars:search' %}" method="GET">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
@@ -45,10 +45,13 @@
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-location" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Select Location</option>
+                                <div class="dropdown bootstrap-select search-fields">
+                                    <select class="selectpicker search-fields" name="location" tabindex="-98">
+                                        <option disabled="disabled" selected="selected">{% if request.GET.location %} {{ request.GET.location }} {% else %} Select Location {% endif %}</option>
                                     {% for location in locations %}
-                                        <option>{{ location }}</option>
+                                        {% if location != request.GET.location %}
+                                            <option>{{ location }}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>

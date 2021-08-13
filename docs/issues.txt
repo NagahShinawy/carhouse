@@ -55,6 +55,13 @@ settartt, override save method
 
 18- adding slug
 
+====================================================================
+
+19- clean up Car model and remove unsued fields
+====================================================================
+20- fixing bug for params not send next time request
+
+
 
 
 

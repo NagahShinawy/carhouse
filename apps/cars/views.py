@@ -59,6 +59,7 @@ class CarSearchView(ListView):
         location = params.get("location")
         year = params.get("year")
         type_ = params.get("type")
+        use = params.get("use")
         transmission = params.get("transmission")
         price_range = params.get("price")
         if brand:
@@ -72,6 +73,9 @@ class CarSearchView(ListView):
 
         if year:
             parsed_params["year"] = year
+
+        if use:
+            parsed_params["use__icontains"] = use
 
         if type_:
             parsed_params["type__icontains"] = type_

@@ -11,7 +11,7 @@ def get_brands(request):
 
 
 def get_makes(request):
-    return {"makes": [make[-1] for make in Make.choices]}
+    return {"makes": [make[-1] for make in Make.choices if make[0]]}
 
 
 def get_years_range(request):

@@ -21,24 +21,25 @@
     <div class="container">
         <div class="search-area-inner">
             <div class="search-contents">
-                <form action="{% url 'cars:search' %}" method="GET">
+                <form action="{% url 'cars:search' %}" method="GET" id="search-form">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-brand" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Select Brand</option>
+                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="brand" tabindex="-98" form="search-form">
+                                    <option disabled="disabled" selected="selected" value="{{ request.GET.brand }}">{% if request.GET.brand %} {{ request.GET.brand }} {% else %} Select Brand {% endif %}</option>
                                     {% for brand in brands %}
-                                        <option>{{ brand }}</option>
+                                        <option value="{{ brand }}">{{ brand }}</option>
                                     {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-make" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Select Make</option>
+                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="make" tabindex="-98">
+                                    <option disabled="disabled" selected="selected">{% if request.GET.make %} {{ request.GET.make }} {% else %} Select Make {% endif %}</option>
                                     {% for make in makes %}
-                                        <option>{{ make }}</option>
+                                            <option value="{{ make }}">{{ make }}</option>
+
                                     {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
@@ -49,19 +50,17 @@
                                     <select class="selectpicker search-fields" name="location" tabindex="-98">
                                         <option disabled="disabled" selected="selected">{% if request.GET.location %} {{ request.GET.location }} {% else %} Select Location {% endif %}</option>
                                     {% for location in locations %}
-                                        {% if location != request.GET.location %}
-                                            <option>{{ location }}</option>
-                                        {% endif %}
+                                            <option value="{{ location }}">{{ location }}</option>
                                     {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-year" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Select Year</option>
+                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="year" tabindex="-98">
+                                    <option disabled="disabled" selected="selected">{% if request.GET.year %} {{ request.GET.year }} {% else %} Select Year {% endif %}</option>
                                     {% for year in years %}
-                                        <option>{{ year }}</option>
+                                        <option value="{{ year }}">{{ year }}</option>
                                     {% endfor %}
                                 </select><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
                             </div>
@@ -70,8 +69,8 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
-                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="select-type" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Select Type Of Car</option>
+                                <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="use" tabindex="-98">
+                                <option disabled="disabled" selected="selected">{% if request.GET.use %} {{ request.GET.location }} {% else %} Select Type Of Car {% endif %}</option>
                                     {% for use in uses %}
                                         <option>{{ use }}</option>
                                     {% endfor %}
@@ -81,7 +80,7 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div class="form-group">
                                 <div class="dropdown bootstrap-select search-fields"><select class="selectpicker search-fields" name="transmission" tabindex="-98">
-                                    <option disabled="disabled" selected="selected">Transmission</option>
+                                    <option disabled="disabled" selected="selected">{% if request.GET.transmission %} {{ request.GET.transmission }} {% else %} Select Transmission {% endif %}</option>
                                     {% for transmission in transmissions %}
                                         <option>{{ transmission }}</option>
                                     {% endfor %}

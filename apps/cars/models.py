@@ -163,6 +163,7 @@ class Make(models.TextChoices):
         _("Suzuki Motor Corp. Owns a small stake in Toyota"),
     )
     TESLA = "Tesla Inc.", _("Tesla Inc.")
+    __empty__ = _("(Unknown)")
 
 
 class Year:
@@ -209,6 +210,7 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
         verbose_name=_("brand"),
         default=Brand.__empty__,
     )
+    make = models.CharField(max_length=100, choices=Make.choices, verbose_name=_("make"), default=Make.__empty__)
 
     state = models.CharField(
         choices=State.choices, verbose_name=_("state"), max_length=50

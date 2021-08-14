@@ -14,7 +14,7 @@
         <div class="breadcrumb-areas">
             <h1>Dashboard</h1>
             <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{% url 'cars:index' %}">Home</a></li>
                 <li class="active">{{ request.user|title }}</li>
             </ul>
         </div>
@@ -46,7 +46,7 @@
 		    <tr>
 		  <th scope="row">1</th>
 		  <td>{{ car.car_title }}</td>
-		  <td>Austin</td>
+		  <td>{{ car.location }}</td>
 		  <td>${{ car.price|floatformat:2|intcomma }}</td>
 		  <td><a href="{% url 'cars:car-details' pk=car.pk %}" class="btn btn-outline-dark">View Car</a></td>
 		</tr>

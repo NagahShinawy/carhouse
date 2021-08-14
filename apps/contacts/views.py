@@ -1,4 +1,7 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LogoutView as BaseLogoutView
+from django.contrib.auth.views import LoginView as BaseLoginView
+from django.urls import reverse
 
 
 class ContactusView(TemplateView):
@@ -9,13 +12,14 @@ class SignUpView(TemplateView):
     template_name = "contacts/signup.html"
 
 
-class LoginView(TemplateView):
+class LoginView(BaseLoginView):
     template_name = "contacts/login.html"
 
 
-class LogoutView(TemplateView):
-    template_name = 'contacts/logout.html'
+class LogoutView(BaseLogoutView):
+    def get_next_page(self):
+        return reverse("cars:index")
 
 
 class DashboardView(TemplateView):
-    template_name = 'contacts/dashboard.html'
+    template_name = "contacts/dashboard.html"

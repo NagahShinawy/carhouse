@@ -3,7 +3,7 @@ created by Nagaj at 02/08/2021
 """
 
 from django.urls import path
-from .views import ContactusView, LoginView, SignUpView, LogoutView, DashboardView
+from .views import ContactusView, SignUpView, DashboardView, LogoutView, LoginView
 
 app_name = "contacts"
 

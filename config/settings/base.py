@@ -183,3 +183,4 @@ LOGGING = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+LOGIN_REDIRECT_URL = "cars:index"

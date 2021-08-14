@@ -82,3 +82,12 @@ https://stackoverflow.com/questions/6281404/how-to-apply-multiple-filters-on-a-d
 
 ====================================================================
 
+16- unique values for model ==> Car.objects.values_list('model', flat=True).distinct()
+16- unique values for city ==> Car.objects.values_list('city', flat=True).distinct()
+16- unique values for year ==> Car.objects.values_list('year', flat=True).distinct()
+
+====================================================================
+
+17- how to custom admin django panel
+1- create templates/admin/base_site.html
+2- extends base template of admin inside your new customized template

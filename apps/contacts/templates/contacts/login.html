@@ -7,20 +7,8 @@
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
-
-{% block banner %}
-    <div class="sub-banner overview-bgi">
-    <div class="container breadcrumb-area">
-        <div class="breadcrumb-areas">
-            <h1>Login To Your Account</h1>
-            <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a></li>
-                <li class="active">Login</li>
-            </ul>
-        </div>
-    </div>
-</div>
-{% endblock %}
+{% block header %} {% endblock %}
+{% block banner %} {% endblock %}
 
 <!-- Sub Banner end -->
 
@@ -58,7 +46,7 @@
                             <li><a href="#" class="google-bg"><i class="fa fa-google google-i"></i><span>Google</span></a></li>
                         </ul>
                     </form>
-                    <p>Don't have an account? <a href="signup.html" class="thembo"> Register here</a></p>
+                    <p>Don't have an account? <a href="{% url 'contacts:signup' %}" class="thembo"> Register here</a></p>
                 </div>
             </div>
         </div>

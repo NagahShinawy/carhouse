@@ -11,3 +11,11 @@ class SignUpView(TemplateView):
 
 class LoginView(TemplateView):
     template_name = "contacts/login.html"
+
+
+class LogoutView(TemplateView):
+    template_name = 'contacts/logout.html'
+
+
+class DashboardView(TemplateView):
+    template_name = 'contacts/dashboard.html'

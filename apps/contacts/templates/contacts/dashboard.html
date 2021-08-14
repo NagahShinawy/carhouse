@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load humanize %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX5VQP"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="page_loader"></div>
+
+
+{% block banner %}
+<!-- Sub banner start -->
+    <div class="sub-banner overview-bgi">
+    <div class="container breadcrumb-area">
+        <div class="breadcrumb-areas">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumbs">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">{{ request.user|title }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Sub Banner end -->
+{% endblock %}
+
+{% block content %}
+<!--   Dashboard Start   -->
+    <div class="container mt-50 mb-50">
+	<div class="main-title" style="text-align:left !important;">
+            <h1>Welcome <span>{{ request.user|title }}</span></h1>
+            <p>Here are the cars that you have inquired about</p>
+        </div>
+    {% if cars %}
+	    <table class="table table-hover">
+	  <thead>
+		<tr>
+		  <th scope="col">#</th>
+		  <th scope="col">Car Name</th>
+		  <th scope="col">Location</th>
+		  <th scope="col">Price</th>
+		  <th scope="col">Action</th>
+		</tr>
+	  </thead>
+	  <tbody>
+        {% for car in cars %}
+		    <tr>
+		  <th scope="row">1</th>
+		  <td>{{ car.car_title }}</td>
+		  <td>Austin</td>
+		  <td>${{ car.price|floatformat:2|intcomma }}</td>
+		  <td><a href="{% url 'cars:car-details' pk=car.pk %}" class="btn btn-outline-dark">View Car</a></td>
+		</tr>
+        {% endfor %}
+        </tbody>
+	</table>
+    {% else %}
+        <h3>You Have No Cars!</h3>
+    {% endif %}
+</div>
+
+<!--   Dashboard End   -->
+{% endblock %}

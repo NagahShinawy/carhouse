@@ -39,7 +39,7 @@ class AuthenticationForm(BaseAuthenticationForm):
         self.fields["password"].error_messages = {"required": _("Enter Password")}
 
 
-class SignUpForm(UserCreationForm):
+class UserSignUpForm(UserCreationForm):
     username = forms.CharField(max_length=30)
     email = forms.EmailField(max_length=200)
 

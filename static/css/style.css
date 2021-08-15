@@ -9780,9 +9780,8 @@ a.disabled-arrow:hover {
 }
 
 
-div.invalid-login ul li {
+div.invalid-login ul li, ul.errorlist li {
     color: #ba0707 !important;
 }
-
 
 

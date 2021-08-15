@@ -5,8 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import CreateView
 from django.urls import reverse
 from django.shortcuts import redirect
-from django.contrib.auth.forms import UserCreationForm
-from apps.contacts.forms.auth import SignUpForm
+from apps.contacts.forms.auth import UserSignUpForm
 
 
 class ContactusView(TemplateView):
@@ -15,14 +14,13 @@ class ContactusView(TemplateView):
 
 class SignUpView(CreateView):
     template_name = "contacts/signup.html"
-    form_class = SignUpForm
+    form_class = UserSignUpForm
 
     def get_success_url(self):
         return reverse("cars:index")
 
     def form_valid(self, form):
-        if form.is_valid():
-            form.save()
+        form.save()
         username = self.request.POST.get('username')
         password = self.request.POST.get('password1')
         user = authenticate(username=username, password=password)

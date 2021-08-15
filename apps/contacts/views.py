@@ -20,6 +20,7 @@ class SignUpView(CreateView):
         return reverse("cars:index")
 
     def form_valid(self, form):
+        # form already valid
         form.save()
         username = self.request.POST.get('username')
         password = self.request.POST.get('password1')

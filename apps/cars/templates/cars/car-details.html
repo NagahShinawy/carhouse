@@ -213,10 +213,10 @@
                                   <label for="name" class="col-form-label">Hello, My Name is</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="first_name" class="form-control" placeholder="First Name" required="">
+                                      <input type="text" name="first_name" value="{{ user.first_name }}" class="form-control" placeholder="First Name" required="">
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name" required="">
+                                      <input type="text" name="last_name" value="{{ user.last_name }}" class="form-control" placeholder="Last Name" required="">
                                     </div>
                                   </div>
                                 </div>
@@ -230,7 +230,7 @@
                                     </div>
 
                                 <div class="form-group">
-                                  <input type="text" name="car_title" class="form-control" value="LAMBORGHINI HURACÁN." readonly="">
+                                  <input type="text" name="car_title" class="form-control" value="{{ car.car_title }}" readonly="">
                                 </div>
 
                                 <div class="form-group">

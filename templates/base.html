@@ -82,6 +82,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link {% if request.path == '/contact-us/' %}active{% endif %}" href="{% url 'contacts:contact-us' %}">Contact</a>
                     </li>
+                    {% if  request.user.is_authenticated%}
+                        <li class="nav-item dropdown">
+                        <a class="nav-link {% if request.path == 'accounts/dashboard/' %}active{% endif %}" href="{% url 'contacts:dashboard' %}">Dashboard</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="{% static 'pdf/rules_and_regulations.pdf' %}">
                             Rules

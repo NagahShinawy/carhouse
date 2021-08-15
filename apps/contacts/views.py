@@ -6,6 +6,7 @@ from django.views.generic import CreateView
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
+from apps.contacts.forms.auth import SignUpForm
 
 
 class ContactusView(TemplateView):
@@ -14,7 +15,7 @@ class ContactusView(TemplateView):
 
 class SignUpView(CreateView):
     template_name = "contacts/signup.html"
-    form_class = UserCreationForm
+    form_class = SignUpForm
 
     def get_success_url(self):
         return reverse("cars:index")

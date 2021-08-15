@@ -107,11 +107,13 @@
 <!-- Main header end -->
 
 <!-- Banner start -->
-{% block banner %}
+{% block banner %}{% endblock %}
 
+{% block msg %}
+  {% include '_partials/_messages.html' %}
 {% endblock %}
 <!-- Banner end -->
-{% block messages %} {% include '_partials/_messages.html' %} {% endblock %}
+
 <!-- Search box 2 end -->
 {% block search %}
 

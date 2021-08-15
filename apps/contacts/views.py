@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib import messages
 from apps.contacts.forms.auth import UserSignUpForm
+from apps.core.constants import messages as msg
 
 
 class ContactusView(TemplateView):
@@ -19,22 +20,31 @@ class SignUpView(CreateView):
 
     def get_success_url(self):
         return reverse("cars:index")
+    
+    def form_invalid(self, form):
+        messages.error(self.request, "\n".join(form.errors["__all__"]))
+        return super().form_invalid(form)
 
     def form_valid(self, form):
         # form already valid
         form.save()
-        username = self.request.POST.get('username')
-        password = self.request.POST.get('password1')
+        username = self.request.POST.get("username")
+        password = self.request.POST.get("password1")
         user = authenticate(username=username, password=password)
         login(self.request, user)
+        messages.success(self.request, msg.SIGNUP_SUCCESS)
         return redirect("cars:index")
 
 
 class LoginView(BaseLoginView):
     template_name = "contacts/login.html"
 
+    def form_invalid(self, form):
+        messages.error(self.request, msg.LOGIN_FAILED)
+        return super().form_invalid(form)
+
     def form_valid(self, form):
-        messages.success(self.request, "Login Successfully")
+        messages.success(self.request, msg.LOGIN_SUCCESS)
         return super().form_valid(form)
 
 

@@ -8,8 +8,9 @@
 <!-- End Google Tag Manager (noscript) -->
 <div class="page_loader"></div>
 {% block header %} {% endblock %}
+{% block top %} {% endblock %}
 {% block banner %} {% endblock %}
-
+{% block msg %} {% endblock %}
 <!-- Sub Banner end -->
 
 <!-- Contact section start -->
@@ -26,10 +27,9 @@
                     </div>
                     <h3>Sign into your account</h3>
                     <div class="invalid-login">
+
                         {% if form.errors %}
-                        {% for error in form.errors.values %}
-                            {{ error }}
-                        {% endfor %}
+                            {% include '_partials/_messages.html' %}
                     {% endif %}
                     </div>
                     <form action="{% url 'contacts:login' %}" method="POST">

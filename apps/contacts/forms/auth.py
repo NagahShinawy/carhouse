@@ -40,7 +40,6 @@ class AuthenticationForm(BaseAuthenticationForm):
 
 
 class UserSignUpForm(UserCreationForm):
-
     class Meta:
         model = User
         fields = (

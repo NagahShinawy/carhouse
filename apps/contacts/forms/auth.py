@@ -1,9 +1,12 @@
-from django import forms
 from django.contrib.auth.forms import (
     AuthenticationForm as BaseAuthenticationForm,
     UsernameField,
 )
 from django.utils.translation import gettext_lazy as _
+
+from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class AuthenticationForm(BaseAuthenticationForm):
@@ -33,3 +36,12 @@ class AuthenticationForm(BaseAuthenticationForm):
         # redefined according to user story
         self.fields["username"].error_messages = {"required": _("Enter Username")}
         self.fields["password"].error_messages = {"required": _("Enter Password")}
+
+
+class SignUpForm(UserCreationForm):
+    username = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=200)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2', )

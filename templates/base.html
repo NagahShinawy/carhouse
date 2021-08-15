@@ -84,7 +84,7 @@
                     </li>
                     {% if  request.user.is_authenticated%}
                         <li class="nav-item dropdown">
-                        <a class="nav-link {% if request.path == 'accounts/dashboard/' %}active{% endif %}" href="{% url 'contacts:dashboard' %}">Dashboard</a>
+                        <a class="nav-link {% if request.path == '/accounts/dashboard/' %}active{% endif %}" href="{% url 'contacts:dashboard' %}">Dashboard</a>
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -111,7 +111,7 @@
 
 {% endblock %}
 <!-- Banner end -->
-
+{% block messages %} {% include '_partials/_messages.html' %} {% endblock %}
 <!-- Search box 2 end -->
 {% block search %}
 

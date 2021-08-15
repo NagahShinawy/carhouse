@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import CreateView
 from django.urls import reverse
 from django.shortcuts import redirect
+from django.contrib import messages
 from apps.contacts.forms.auth import UserSignUpForm
 
 
@@ -31,6 +32,10 @@ class SignUpView(CreateView):
 
 class LoginView(BaseLoginView):
     template_name = "contacts/login.html"
+
+    def form_valid(self, form):
+        messages.success(self.request, "Login Successfully")
+        return super().form_valid(form)
 
 
 class LogoutView(BaseLogoutView):

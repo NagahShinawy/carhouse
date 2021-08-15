@@ -9785,3 +9785,7 @@ div.invalid-login ul li, ul.errorlist li {
 }
 
 
+#message {
+    text-align: center !important;
+    margin-top: 20px !important
+}

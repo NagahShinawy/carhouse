@@ -20,9 +20,15 @@ class SignUpView(CreateView):
 
     def get_success_url(self):
         return reverse("cars:index")
-    
+
+    @staticmethod
+    def from_errorlist_to_str(form):
+        return "<br>".join([v[0] for v in form.errors.values()])
+
     def form_invalid(self, form):
-        messages.error(self.request, "\n".join(form.errors["__all__"]))
+        # form has error(s)
+        errors = self.from_errorlist_to_str(form)
+        messages.error(self.request, errors)
         return super().form_invalid(form)
 
     def form_valid(self, form):

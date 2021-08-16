@@ -110,3 +110,10 @@ https://stackoverflow.com/questions/6281404/how-to-apply-multiple-filters-on-a-d
 <li><a href="{% provider_login_url 'facebook' method="oauth2" %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
 
 # allauth creates new user when using social login and set first_name = fb-fname & last_name=fb-lname
+
+
+====================================================================
+1- https://console.cloud.google.com/apis/dashboard?pli=1
+2- create app
+3- oauth consent screen ==> external
+4- create credentials

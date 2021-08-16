@@ -109,6 +109,7 @@ https://stackoverflow.com/questions/6281404/how-to-apply-multiple-filters-on-a-d
 {% providers_media_js %}
 <li><a href="{% provider_login_url 'facebook' method="oauth2" %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
 
+method="oauth2" or method="js_sdk"
 # allauth creates new user when using social login and set first_name = fb-fname & last_name=fb-lname
 
 

@@ -28,11 +28,20 @@ DEBUG_TOOLBAR = os.environ.get("DEBUG_TOOLBAR", default=False)
 
 ALLOWED_HOSTS = []
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
+    "django.contrib.sites",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -47,9 +56,23 @@ INSTALLED_APPS += [
     "apps.teams",
 ]
 
-# third party
+# rich text
 INSTALLED_APPS += [
     "ckeditor",
+]
+
+# social media auth
+INSTALLED_APPS += [
+    # core
+    "allauth",
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.github'
 ]
 
 # django-multiselectfield:
@@ -128,9 +151,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 # Internationalization
@@ -171,12 +194,12 @@ LOGGING = {
             "style": "{",
             "datefmt": "%d/%b/%Y %H:%M:%S",
         },
-        "simple": {"format": "[{levelname}] {message}", "style": "{",},
+        "simple": {"format": "[{levelname}] {message}", "style": "{", },
     },
     "handlers": {
         "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
-    "root": {"handlers": ["console"], "level": "DEBUG",},
+    "root": {"handlers": ["console"], "level": "DEBUG", },
 }
 
 # Default primary key field type
@@ -187,3 +210,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 # redirect
 LOGIN_REDIRECT_URL = "contacts:dashboard"
 SIGNUP_REDIRECT_URL = "cars:index"
+
+# sites
+
+SITE_ID = 1  # enabled

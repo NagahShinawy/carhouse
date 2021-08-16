@@ -91,3 +91,22 @@ https://stackoverflow.com/questions/6281404/how-to-apply-multiple-filters-on-a-d
 17- how to custom admin django panel
 1- create templates/admin/base_site.html
 2- extends base template of admin inside your new customized template
+
+
+====================================================================
+
+18- integrate with social media
+
+1- allauth config
+2- create facebook app tp get appId [developers.facebookc.com ==> create app]
+3- setup fb-login for your app
+4- add your domain [localhost:8000]
+5- add secret key fb app at admin panel
+6- add site examples & save
+
+# how
+{% load socialaccount %}
+{% providers_media_js %}
+<li><a href="{% provider_login_url 'facebook' method="oauth2" %}" class="facebook-bg"><i class="fa fa-facebook facebook-i"></i><span>Facebook</span></a></li>
+
+# allauth creates new user when using social login and set first_name = fb-fname & last_name=fb-lname

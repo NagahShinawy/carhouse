@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load humanize %}
-{% block title %} Dashboard {% if request.user.is_authenticated %} - {{ request.user|lower }} {% endif %}{% endblock %}
+{% block title %}
+    Dashboard
+    {% include '_partials/username.html' %}
+{% endblock %}
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX5VQP"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -16,7 +19,9 @@
             <h1>Dashboard</h1>
             <ul class="breadcrumbs">
                 <li><a href="{% url 'cars:index' %}">Home</a></li>
-                {% if request.user.is_authenticated %} <li class="active">{{ request.user|title }}</li>
+                {% if request.user.is_authenticated %} <li class="active">
+                    {% include '_partials/username.html' %}
+                </li>
                 {% else %}
                     <li> / <a href="{% url 'contacts:login' %}">Login</a></li>
                 {% endif %}
@@ -35,7 +40,9 @@
 <!--   Dashboard Start   -->
     <div class="container mt-50 mb-50">
 	<div class="main-title" style="text-align:left !important;">
-            {% if request.user.is_authenticated %} <h1>Welcome <span>{{ request.user|title }}</span></h1> {% endif %}
+            {% if request.user.is_authenticated %} <h1>Welcome <span>
+                {% include '_partials/username.html' %}
+            </span></h1> {% endif %}
             <p>Here are the cars that you have inquired about</p>
         </div>
     {% if request.user.is_authenticated %}

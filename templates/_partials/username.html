@@ -1,0 +1,7 @@
+{% if request.user.is_authenticated %} |
+    {% if request.user.first_name %}
+        {{ request.user.first_name }}
+    {% else %}
+        {{ request.user|lower }}
+    {% endif %}
+{% endif %}

@@ -21,3 +21,6 @@ settartt, override save method
 
 ===========================================================
 7- make username is not sensitive for login
+
+===========================================
+8- using email to login

@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% load static %}
-{% block title %} opensooq {% if request.user.is_authenticated %} - {{ request.user|lower }} {% endif %} {% endblock %}
+{% block title %}
+    Home
+    {% include '_partials/username.html' %}
+{% endblock %}
 
 {% block banner %}
     <div class="banner" id="banner">

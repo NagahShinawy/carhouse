@@ -56,6 +56,7 @@ class LoginView(BaseLoginView):
 
 class LogoutView(BaseLogoutView):
     def get_next_page(self):
+        messages.success(self.request, msg.LOGOUT_SUCCESS)
         return reverse("cars:index")
 
 

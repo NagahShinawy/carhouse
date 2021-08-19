@@ -11,6 +11,7 @@ from apps.core.db.models import (
     TimeStampModelMixin,
     ImageModelMixin,
 )
+from decimal import Decimal
 from apps.core.db.models.mixin import model_directory
 from apps.core.db.models.fields import VinNumberField
 
@@ -233,7 +234,8 @@ class Car(TimeStampModelMixin, ImageModelMixin, models.Model):
 
     conditions = models.CharField(max_length=100, verbose_name=_("conditions"))
 
-    price = models.IntegerField(verbose_name=_("price"))
+    # price = models.IntegerField(verbose_name=_("price"))
+    price = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal(0), verbose_name=_("price"))
 
     description = RichTextField(max_length=255, verbose_name=_("description"))
 
